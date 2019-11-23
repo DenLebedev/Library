@@ -5,7 +5,7 @@ namespace Library.WebApp.App_Start
 {
     using System;
     using System.Web;
-
+    using Library.LogicContracts;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
@@ -61,6 +61,13 @@ namespace Library.WebApp.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<ICatalogueCartLogic>()
+                .To<Library.CatalogueLogic.CatalogueCartLogic>()
+                .InRequestScope();
+
+            kernel.Bind<IAuthorLogic>()
+                .To<Library.CatalogueLogic.AuthorLogic>()
+                .InSingletonScope();
         }        
     }
 }

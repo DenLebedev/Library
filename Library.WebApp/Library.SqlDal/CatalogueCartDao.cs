@@ -1,14 +1,14 @@
-﻿using Library.Entities;
-using Library.LogicContracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Library.DalContracts;
+using Library.Entities;
 
-namespace Library.CatalogueLogic
+namespace Library.SqlDal
 {
-    public class AuthorLogic : IAuthorLogic
+    class CatalogueCartDao : ICatalogueCartDao
     {
-        public bool Add(Author author)
+        public bool Add(CatalogueCart cart)
         {
             throw new NotImplementedException();
         }
@@ -23,12 +23,12 @@ namespace Library.CatalogueLogic
             throw new NotImplementedException();
         }
 
-        public ICollection<Author> GetAll()
+        public CatalogueCart GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Author GetById(int id)
+        public ICollection<CatalogueCart> GrtAll()
         {
             throw new NotImplementedException();
         }

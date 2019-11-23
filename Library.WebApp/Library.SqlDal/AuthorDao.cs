@@ -1,12 +1,11 @@
-﻿using Library.Entities;
-using Library.LogicContracts;
+﻿using Library.DalContracts;
+using Library.Entities;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Library.CatalogueLogic
+namespace Library.SqlDal
 {
-    public class AuthorLogic : IAuthorLogic
+    public class AuthorDao : IAuthorDao
     {
         public bool Add(Author author)
         {
