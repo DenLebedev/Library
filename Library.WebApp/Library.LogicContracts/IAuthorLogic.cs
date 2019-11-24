@@ -11,9 +11,9 @@ namespace Library.LogicContracts
 
         bool Delete(int id);
 
-        bool Edit(int id);
+        bool Edit(Author author);
 
-        ICollection<Author> GetAll();
+        IEnumerable<Author> GetAll();
 
         Author GetById(int id);
     }

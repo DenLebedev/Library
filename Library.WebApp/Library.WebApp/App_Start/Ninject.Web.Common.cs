@@ -5,7 +5,6 @@ namespace Library.WebApp.App_Start
 {
     using System;
     using System.Web;
-    using Library.LogicContracts;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
@@ -33,7 +32,7 @@ namespace Library.WebApp.App_Start
         {
             bootstrapper.ShutDown();
         }
-        
+
         /// <summary>
         /// Creates the kernel that will manage your application.
         /// </summary>
@@ -45,7 +44,7 @@ namespace Library.WebApp.App_Start
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-                RegisterServices(kernel);
+                NinjectConfig.Config.RegisterServices(kernel);
                 return kernel;
             }
             catch
@@ -54,20 +53,5 @@ namespace Library.WebApp.App_Start
                 throw;
             }
         }
-
-        /// <summary>
-        /// Load your modules or register your services here!
-        /// </summary>
-        /// <param name="kernel">The kernel.</param>
-        private static void RegisterServices(IKernel kernel)
-        {
-            kernel.Bind<ICatalogueCartLogic>()
-                .To<Library.CatalogueLogic.CatalogueCartLogic>()
-                .InRequestScope();
-
-            kernel.Bind<IAuthorLogic>()
-                .To<Library.CatalogueLogic.AuthorLogic>()
-                .InSingletonScope();
-        }        
     }
 }

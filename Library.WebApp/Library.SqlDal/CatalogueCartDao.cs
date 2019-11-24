@@ -6,7 +6,7 @@ using Library.Entities;
 
 namespace Library.SqlDal
 {
-    class CatalogueCartDao : ICatalogueCartDao
+    public  class CatalogueCartDao : ICatalogueCartDao
     {
         public bool Add(CatalogueCart cart)
         {
