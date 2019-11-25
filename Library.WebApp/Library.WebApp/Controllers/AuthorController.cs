@@ -24,12 +24,6 @@ namespace Library.WebApp.Controllers
             return View(model);
         }
 
-        //// GET: Author/Details/5
-        //public ActionResult Details(int id)
-        //{
-        //    return View();
-        //}
-
         // GET: Author/Create
         public ActionResult Create()
         {
@@ -54,33 +48,36 @@ namespace Library.WebApp.Controllers
             }
         }
 
-        //// GET: Author/Edit/5
-        //public ActionResult Edit(int id)
-        //{
-        //    return View();
-        //}
+        // GET: Author/Edit/5
+        public ActionResult Edit(int id)
+        {
+            var model = authorLogic.GetById(id);
+            return View(model);
+        }
 
-        //// POST: Author/Edit/5
-        //[HttpPost]
-        //public ActionResult Edit(int id, FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add update logic here
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+        // POST: Author/Edit/5
+        [HttpPost, ActionName("Edit")]
+        public ActionResult EditComfirmed(Author model)
+        {
+            try
+            {
+                if (ModelState.IsValid && authorLogic.Edit(model))
+                {
+                    return RedirectToAction("Index");
+                }
+                return View(model);
+            }
+            catch
+            {
+                return View(model);
+            }
+        }
 
         // GET: Author/Delete/5
         public ActionResult Delete(int id)
         {
             var model = authorLogic.GetById(id);
-            return View();
+            return View(model);
         }
 
         // POST: Author/Delete/5

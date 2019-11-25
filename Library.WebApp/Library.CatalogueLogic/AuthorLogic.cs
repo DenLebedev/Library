@@ -44,7 +44,7 @@ namespace Library.CatalogueLogic
 
         public bool Edit(Author author)
         {
-            throw new NotImplementedException();
+            return authors.Edit(author);
         }
 
         public IEnumerable<Author> GetAll()

@@ -2,6 +2,7 @@
 using Library.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace Library.SqlDal
@@ -36,21 +37,21 @@ namespace Library.SqlDal
             {
                 using (var con = new SqlConnection(config.ConnectionString))
                 {
-                    var cmnd = con.CreateCommand();
-                    cmnd.CommandText = "INSERT INTO dbo.authors (name, surname) VALUES (@Name, @Surname); SELECT scope_identity()";
-                    cmnd.Parameters.AddWithValue("@Name", author.Name);
-                    cmnd.Parameters.AddWithValue("@Surname", author.Surname);
-
+                    var cmnd = new SqlCommand("add_author", con);
+                    cmnd.CommandType = CommandType.StoredProcedure;
+                    cmnd.Parameters.AddWithValue("@name", author.Name);
+                    cmnd.Parameters.AddWithValue("@surname", author.Surname);
+                    cmnd.Parameters.Add("@id", SqlDbType.Int, 4);
+                    cmnd.Parameters["@id"].Direction = ParameterDirection.Output;
                     con.Open();
-                    author.Id = (int)(decimal)cmnd.ExecuteScalar();
-
+                    cmnd.ExecuteNonQuery();
+                    author.Id = (int)cmnd.Parameters["@id"].Value;
                     return true;
                 }
             }
             catch
             {
-
-                throw;
+                return false;
             }
         }
 
@@ -60,12 +61,12 @@ namespace Library.SqlDal
             {
                 using (var con = new SqlConnection(config.ConnectionString))
                 {
-                    var cmnd = con.CreateCommand();
-                    cmnd.CommandText = "DELETE FROM dbo.authors WHERE id = @Id";
-                    cmnd.Parameters.AddWithValue("@Id", id);
-
+                    var cmnd = new SqlCommand("delete_author", con);
+                    cmnd.CommandType = CommandType.StoredProcedure;
+                    cmnd.Parameters.AddWithValue("@id", id);
                     con.Open();
-                    return cmnd.ExecuteNonQuery() > 0;
+                    cmnd.ExecuteNonQuery();
+                    return true;
                 }
             }
             catch
@@ -78,9 +79,8 @@ namespace Library.SqlDal
         {
             using (var con = new SqlConnection(config.ConnectionString))
             {
-                var cmnd = con.CreateCommand();
-                cmnd.CommandText = "SELECT id, name, surname FROM dbo.authors";
-
+                var cmnd = new SqlCommand("get_all_authors", con);
+                cmnd.CommandType = CommandType.StoredProcedure;
                 con.Open();
 
                 var reader = cmnd.ExecuteReader();
@@ -100,10 +100,9 @@ namespace Library.SqlDal
         {
             using (var con = new SqlConnection(config.ConnectionString))
             {
-                var cmnd = con.CreateCommand();
-                cmnd.CommandText = "SELECT TOP 1 id, name, surname FROM dbo.authors WHERE id=@Id";
+                var cmnd = new SqlCommand("get_by_id", con);
+                cmnd.CommandType = CommandType.StoredProcedure;
                 cmnd.Parameters.AddWithValue("@id", id);
-
                 con.Open();
 
                 var reader = cmnd.ExecuteReader();
@@ -129,14 +128,16 @@ namespace Library.SqlDal
             {
                 using (var con = new SqlConnection(config.ConnectionString))
                 {
-                    var cmnd = con.CreateCommand();
-                    cmnd.CommandText = "UPDATE dbo.authors SET name = @Name, surname = @Surname WHERE id = @Id";
-                    cmnd.Parameters.AddWithValue("@Name", author.Name);
-                    cmnd.Parameters.AddWithValue("@Surname", author.Surname);
-                    cmnd.Parameters.AddWithValue("@Id", author.Id);
+                    var cmnd = new SqlCommand("edite_author", con);
+                    cmnd.CommandType = CommandType.StoredProcedure;
+                    cmnd.Parameters.AddWithValue("@name", author.Name);
+                    cmnd.Parameters.AddWithValue("@surname", author.Surname);
+                    cmnd.Parameters.AddWithValue("@id", author.Id);
 
                     con.Open();
-                    return cmnd.ExecuteNonQuery() > 0;
+                    cmnd.ExecuteNonQuery();
+
+                    return true;
                 }
             }
             catch
