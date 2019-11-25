@@ -11,7 +11,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Library.DalContracts\Library.DalContracts.csproj" />
     <ProjectReference Include="..\Library.Entities\Library.Entities.csproj" />
-    <ProjectReference Include="..\Library.LogicContracts\Library.LogicContracts.csproj" />
   </ItemGroup>
 
 </Project>

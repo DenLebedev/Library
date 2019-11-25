@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Library.LogicContracts
+namespace Library.DalContracts
 {
-    public interface IAuthorLogic
+    public interface IAuthorDao
     {
         bool Add(Author author);
 

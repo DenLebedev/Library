@@ -3,21 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Library.Entities;
+using Library.LogicContracts;
 
 namespace Library.WebApp.Controllers
 {
     public class AuthorController : Controller
     {
+        private readonly IAuthorLogic authorLogic;
+
+        public AuthorController(IAuthorLogic authorLogic)
+        {
+            this.authorLogic = authorLogic;
+        }
+
         // GET: Author
         public ActionResult Index()
         {
-            return View();
-        }
-
-        // GET: Author/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
+            var model = authorLogic.GetAll();
+            return View(model);
         }
 
         // GET: Author/Create
@@ -28,61 +32,72 @@ namespace Library.WebApp.Controllers
 
         // POST: Author/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Author model)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid && authorLogic.Add(model))
+                {
+                    return RedirectToAction("Index");
+                }
+                return View(model);
             }
             catch
             {
-                return View();
+                return View(model);
             }
         }
 
         // GET: Author/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var model = authorLogic.GetById(id);
+            return View(model);
         }
 
         // POST: Author/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [HttpPost, ActionName("Edit")]
+        public ActionResult EditComfirmed(Author model)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid && authorLogic.Edit(model))
+                {
+                    return RedirectToAction("Index");
+                }
+                return View(model);
             }
             catch
             {
-                return View();
+                return View(model);
             }
         }
 
         // GET: Author/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var model = authorLogic.GetById(id);
+            return View(model);
         }
 
         // POST: Author/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
         {
             try
             {
-                // TODO: Add delete logic here
+                if (authorLogic.Delete(id))
+                {
+                    return RedirectToAction("Index");
+                }
 
-                return RedirectToAction("Index");
+                var model = authorLogic.GetById(id);
+                return View(model);
             }
             catch
             {
-                return View();
+                var model = authorLogic.GetById(id);
+                return View(model);
             }
         }
     }

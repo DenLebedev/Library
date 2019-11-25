@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.WebApp", "Library.WebApp\Library.WebApp.csproj", "{A410AC15-47AF-4E6A-997D-31687149E356}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.LogicContracts", "Library.LogicContracts\Library.LogicContracts.csproj", "{E7C7F559-4E0E-4294-9DF5-C1D5DCAD8269}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.LogicContracts", "Library.LogicContracts\Library.LogicContracts.csproj", "{E7C7F559-4E0E-4294-9DF5-C1D5DCAD8269}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Entities", "Library.Entities\Library.Entities.csproj", "{B59F3EF4-1FBF-4C35-826A-31D7927B0748}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Entities", "Library.Entities\Library.Entities.csproj", "{B59F3EF4-1FBF-4C35-826A-31D7927B0748}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.CatalogueLogic", "Library.CatalogueLogic\Library.CatalogueLogic.csproj", "{F2ACFCBF-7A5A-41BB-B67D-B92CF134194B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.CatalogueLogic", "Library.CatalogueLogic\Library.CatalogueLogic.csproj", "{F2ACFCBF-7A5A-41BB-B67D-B92CF134194B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{2D981325-F8BD-4D23-AF5A-85AFA049FFCB}"
 EndProject
@@ -18,6 +18,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{ADD37C40-27E6-4F67-BF46-D09F57C3B4E5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLogic", "BusinessLogic", "{74FA05C2-C312-4620-B584-F84F2469D70B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.DalContracts", "Library.DalContracts\Library.DalContracts.csproj", "{B28AC167-F318-45AA-80C4-15DF71ACD09C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.SqlDal", "Library.SqlDal\Library.SqlDal.csproj", "{83DBF8FC-7A13-43FE-9D5E-C89962108FD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.NinjectConfig", "Library.NinjectConfig\Library.NinjectConfig.csproj", "{02AB7574-76CE-4552-8A8A-7F82D7B6D4D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +47,18 @@ Global
 		{F2ACFCBF-7A5A-41BB-B67D-B92CF134194B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2ACFCBF-7A5A-41BB-B67D-B92CF134194B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2ACFCBF-7A5A-41BB-B67D-B92CF134194B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B28AC167-F318-45AA-80C4-15DF71ACD09C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B28AC167-F318-45AA-80C4-15DF71ACD09C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B28AC167-F318-45AA-80C4-15DF71ACD09C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B28AC167-F318-45AA-80C4-15DF71ACD09C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83DBF8FC-7A13-43FE-9D5E-C89962108FD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83DBF8FC-7A13-43FE-9D5E-C89962108FD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83DBF8FC-7A13-43FE-9D5E-C89962108FD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83DBF8FC-7A13-43FE-9D5E-C89962108FD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02AB7574-76CE-4552-8A8A-7F82D7B6D4D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02AB7574-76CE-4552-8A8A-7F82D7B6D4D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02AB7574-76CE-4552-8A8A-7F82D7B6D4D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02AB7574-76CE-4552-8A8A-7F82D7B6D4D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +68,9 @@ Global
 		{E7C7F559-4E0E-4294-9DF5-C1D5DCAD8269} = {74FA05C2-C312-4620-B584-F84F2469D70B}
 		{B59F3EF4-1FBF-4C35-826A-31D7927B0748} = {2D981325-F8BD-4D23-AF5A-85AFA049FFCB}
 		{F2ACFCBF-7A5A-41BB-B67D-B92CF134194B} = {74FA05C2-C312-4620-B584-F84F2469D70B}
+		{B28AC167-F318-45AA-80C4-15DF71ACD09C} = {ADD37C40-27E6-4F67-BF46-D09F57C3B4E5}
+		{83DBF8FC-7A13-43FE-9D5E-C89962108FD8} = {ADD37C40-27E6-4F67-BF46-D09F57C3B4E5}
+		{02AB7574-76CE-4552-8A8A-7F82D7B6D4D6} = {2D981325-F8BD-4D23-AF5A-85AFA049FFCB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {548BFAB4-AEFD-4AA0-B683-B0C3B8EED764}
