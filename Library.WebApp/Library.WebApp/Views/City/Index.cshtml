@@ -1,10 +1,10 @@
-﻿@model IEnumerable<Library.Entities.Author>
+﻿@model IEnumerable<Library.Entities.City>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h4>Authors</h4>
+<h4>Cities</h4>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -14,9 +14,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Surname)
-        </th>
         <th></th>
     </tr>
 
@@ -24,9 +21,6 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Surname)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

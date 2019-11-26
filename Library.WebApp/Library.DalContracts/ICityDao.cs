@@ -5,16 +5,16 @@ using System.Text;
 
 namespace Library.DalContracts
 {
-    public interface IAuthorDao
+    public interface ICityDao
     {
-        bool Add(Author author);
+        bool Add(City city);
 
         bool Delete(int id);
 
-        bool Edit(Author author);
+        bool Edit(City city);
 
-        ICollection<Author> GetAll();
+        ICollection<City> GetAll();
 
-        Author GetById(int id);
+        City GetById(int id);
     }
 }

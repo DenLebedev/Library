@@ -22,23 +22,23 @@ namespace Library.NinjectConfig
                 .WithConstructorArgument("connectionString", ConfigurationManager.ConnectionStrings["LibraryCatalogueDB"].ConnectionString);
 
             kernel
-                .Bind<ICatalogueCartLogic>()
-                .To<CatalogueLogic.CatalogueCartLogic>()
-                .InSingletonScope();
-
-            kernel
                 .Bind<IAuthorLogic>()
                 .To<CatalogueLogic.AuthorLogic>()
                 .InSingletonScope();
 
             kernel
-                .Bind<ICatalogueCartDao>()
-                .To<SqlDal.CatalogueCartDao>()
+                .Bind<ICityLogic>()
+                .To<CatalogueLogic.CityLogic>()
                 .InSingletonScope();
 
             kernel
                 .Bind<IAuthorDao>()
                 .To<SqlDal.AuthorDao>()
+                .InSingletonScope();
+
+            kernel
+                .Bind<ICityDao>()
+                .To<SqlDal.CityDao>()
                 .InSingletonScope();
         }
     }

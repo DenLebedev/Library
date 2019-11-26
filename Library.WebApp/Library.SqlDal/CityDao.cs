@@ -4,44 +4,39 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text;
 
 namespace Library.SqlDal
 {
-    public class AuthorDao : IAuthorDao
+    public class CityDao : ICityDao
     {
         SqlDalConfig config;
 
-        public AuthorDao(SqlDalConfig config)
+        public CityDao(SqlDalConfig config)
         {
             this.config = config;
         }
 
-        public bool Add(Author author)
+        public bool Add(City city)
         {
-            if (author == null)
+            if (city == null)
             {
                 throw new ArgumentNullException();
             }
 
-            if (author.Name == null || author.Name.Length > 50)
+            if (city.Name == null || city.Name.Length > 200)
             {
-                throw new ArgumentException("Author Name");
-            }
-
-            if (author.Surname == null || author.Surname.Length > 200)
-            {
-                throw new ArgumentException("Author Lastname");
+                throw new ArgumentException("City Name");
             }
 
             try
             {
                 using (var con = new SqlConnection(config.ConnectionString))
                 {
-                    using (var cmnd = new SqlCommand("author_add", con))
+                    using (var cmnd = new SqlCommand("city_add", con))
                     {
                         cmnd.CommandType = CommandType.StoredProcedure;
-                        cmnd.Parameters.AddWithValue("@name", author.Name);
-                        cmnd.Parameters.AddWithValue("@surname", author.Surname);
+                        cmnd.Parameters.AddWithValue("@name", city.Name);
                         cmnd.Parameters.Add("@id", SqlDbType.Int, 4);
                         cmnd.Parameters["@id"].Direction = ParameterDirection.Output;
                         con.Open();
@@ -49,9 +44,9 @@ namespace Library.SqlDal
                         int? id = cmnd.Parameters["@id"].Value as int?;
                         if (id != null)
                         {
-                            author.Id = (int)cmnd.Parameters["@id"].Value;
-                        }
-                        return true; 
+                            city.Id = (int)cmnd.Parameters["@id"].Value;
+                        }                        
+                        return true;
                     }
                 }
             }
@@ -67,13 +62,13 @@ namespace Library.SqlDal
             {
                 using (var con = new SqlConnection(config.ConnectionString))
                 {
-                    using (var cmnd = new SqlCommand("author_delete", con))
-                    {                        
+                    using (var cmnd = new SqlCommand("city_delete", con))
+                    {
                         cmnd.CommandType = CommandType.StoredProcedure;
                         cmnd.Parameters.AddWithValue("@id", id);
                         con.Open();
                         cmnd.ExecuteNonQuery();
-                        return true; 
+                        return true;
                     }
                 }
             }
@@ -83,37 +78,59 @@ namespace Library.SqlDal
             }
         }
 
-        public ICollection<Author> GetAll()
+        public bool Edit(City city)
+        {
+            try
+            {
+                using (var con = new SqlConnection(config.ConnectionString))
+                {
+                    using (var cmnd = new SqlCommand("city_edite", con))
+                    {
+                        cmnd.CommandType = CommandType.StoredProcedure;
+                        cmnd.Parameters.AddWithValue("@name", city.Name);
+                        cmnd.Parameters.AddWithValue("@id", city.Id);
+                        con.Open();
+                        cmnd.ExecuteNonQuery();
+                        return true;
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public ICollection<City> GetAll()
         {
             using (var con = new SqlConnection(config.ConnectionString))
             {
-                using (var cmnd = new SqlCommand("authors_get_all", con))
+                using (var cmnd = new SqlCommand("cities_get_all", con))
                 {
                     cmnd.CommandType = CommandType.StoredProcedure;
                     con.Open();
 
                     using (var reader = cmnd.ExecuteReader())
                     {
-                        var authors = new List<Author>();
+                        var cities = new List<City>();
                         while (reader.Read())
                         {
-                            var author = new Author();
-                            author.Id = (int)reader["id"];
-                            author.Name = (string)reader["name"];
-                            author.Surname = (string)reader["surname"];
-                            authors.Add(author);
+                            var city = new City();
+                            city.Id = (int)reader["id"];
+                            city.Name = (string)reader["name"];
+                            cities.Add(city);
                         }
-                        return authors;
+                        return cities;
                     }
                 }
             }
         }
 
-        public Author GetById(int id)
+        public City GetById(int id)
         {
             using (var con = new SqlConnection(config.ConnectionString))
             {
-                using (var cmnd = new SqlCommand("author_get_by_id", con))
+                using (var cmnd = new SqlCommand("city_get_by_id", con))
                 {
                     cmnd.CommandType = CommandType.StoredProcedure;
                     cmnd.Parameters.AddWithValue("@id", id);
@@ -123,44 +140,19 @@ namespace Library.SqlDal
                     {
                         if (reader.Read())
                         {
-                            return new Author
+                            return new City
                             {
                                 Id = (int)reader["id"],
                                 Name = (string)reader["name"],
-                                Surname = (string)reader["surname"],
                             };
                         }
                         else
                         {
                             return null;
-                        }  
+                        }
                     }
                 }
             }
-        }
-
-        public bool Edit(Author author)
-        {
-            try
-            {
-                using (var con = new SqlConnection(config.ConnectionString))
-                {
-                    using (var cmnd = new SqlCommand("author_edite", con))
-                    {
-                        cmnd.CommandType = CommandType.StoredProcedure;
-                        cmnd.Parameters.AddWithValue("@name", author.Name);
-                        cmnd.Parameters.AddWithValue("@surname", author.Surname);
-                        cmnd.Parameters.AddWithValue("@id", author.Id);
-                        con.Open();
-                        cmnd.ExecuteNonQuery();
-                        return true; 
-                    }
-                }
-            }
-            catch
-            {
-                return false;
-            }            
         }
     }
 }
