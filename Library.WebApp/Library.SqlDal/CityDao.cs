@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Library.DalContracts;
+using Library.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using Library.DalContracts;
-using Library.Entities;
 
 namespace Library.SqlDal
 {
-    public  class CatalogueCartDao : ICatalogueCartDao
+    public class CityDao : ICityDao
     {
-        public bool Add(CatalogueCart cart)
+        public bool Add(City city)
         {
             throw new NotImplementedException();
         }
@@ -18,17 +18,17 @@ namespace Library.SqlDal
             throw new NotImplementedException();
         }
 
-        public bool Edit(int id)
+        public bool Edit(City city)
         {
             throw new NotImplementedException();
         }
 
-        public CatalogueCart GetById(int id)
+        public ICollection<City> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public ICollection<CatalogueCart> GrtAll()
+        public City GetById(int id)
         {
             throw new NotImplementedException();
         }

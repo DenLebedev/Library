@@ -37,16 +37,18 @@ namespace Library.SqlDal
             {
                 using (var con = new SqlConnection(config.ConnectionString))
                 {
-                    var cmnd = new SqlCommand("add_author", con);
-                    cmnd.CommandType = CommandType.StoredProcedure;
-                    cmnd.Parameters.AddWithValue("@name", author.Name);
-                    cmnd.Parameters.AddWithValue("@surname", author.Surname);
-                    cmnd.Parameters.Add("@id", SqlDbType.Int, 4);
-                    cmnd.Parameters["@id"].Direction = ParameterDirection.Output;
-                    con.Open();
-                    cmnd.ExecuteNonQuery();
-                    author.Id = (int)cmnd.Parameters["@id"].Value;
-                    return true;
+                    using (var cmnd = new SqlCommand("author_add", con))
+                    {
+                        cmnd.CommandType = CommandType.StoredProcedure;
+                        cmnd.Parameters.AddWithValue("@name", author.Name);
+                        cmnd.Parameters.AddWithValue("@surname", author.Surname);
+                        cmnd.Parameters.Add("@id", SqlDbType.Int, 4);
+                        cmnd.Parameters["@id"].Direction = ParameterDirection.Output;
+                        con.Open();
+                        cmnd.ExecuteNonQuery();
+                        author.Id = (int)cmnd.Parameters["@id"].Value;
+                        return true; 
+                    }
                 }
             }
             catch
@@ -61,12 +63,14 @@ namespace Library.SqlDal
             {
                 using (var con = new SqlConnection(config.ConnectionString))
                 {
-                    var cmnd = new SqlCommand("delete_author", con);
-                    cmnd.CommandType = CommandType.StoredProcedure;
-                    cmnd.Parameters.AddWithValue("@id", id);
-                    con.Open();
-                    cmnd.ExecuteNonQuery();
-                    return true;
+                    using (var cmnd = new SqlCommand("author_delete", con))
+                    {                        
+                        cmnd.CommandType = CommandType.StoredProcedure;
+                        cmnd.Parameters.AddWithValue("@id", id);
+                        con.Open();
+                        cmnd.ExecuteNonQuery();
+                        return true; 
+                    }
                 }
             }
             catch
@@ -79,19 +83,23 @@ namespace Library.SqlDal
         {
             using (var con = new SqlConnection(config.ConnectionString))
             {
-                var cmnd = new SqlCommand("get_all_authors", con);
-                cmnd.CommandType = CommandType.StoredProcedure;
-                con.Open();
-
-                var reader = cmnd.ExecuteReader();
-                while (reader.Read())
+                using (var cmnd = new SqlCommand("authors_get_all", con))
                 {
-                    yield return new Author
+                    cmnd.CommandType = CommandType.StoredProcedure;
+                    con.Open();
+
+                    using (var reader = cmnd.ExecuteReader())
                     {
-                        Id = (int)reader["id"],
-                        Name = (string)reader["name"],
-                        Surname = (string)reader["surname"],
-                    };
+                        while (reader.Read())
+                        {
+                            yield return new Author
+                            {
+                                Id = (int)reader["id"],
+                                Name = (string)reader["name"],
+                                Surname = (string)reader["surname"],
+                            };
+                        } 
+                    }
                 }
             }
         }
@@ -100,24 +108,28 @@ namespace Library.SqlDal
         {
             using (var con = new SqlConnection(config.ConnectionString))
             {
-                var cmnd = new SqlCommand("get_by_id", con);
-                cmnd.CommandType = CommandType.StoredProcedure;
-                cmnd.Parameters.AddWithValue("@id", id);
-                con.Open();
+                using (var cmnd = new SqlCommand("author_get_by_id", con))
+                {
+                    cmnd.CommandType = CommandType.StoredProcedure;
+                    cmnd.Parameters.AddWithValue("@id", id);
+                    con.Open();
 
-                var reader = cmnd.ExecuteReader();
-                if (reader.Read())
-                {
-                    return new Author
+                    using (var reader = cmnd.ExecuteReader())
                     {
-                        Id = (int)reader["id"],
-                        Name = (string)reader["name"],
-                        Surname = (string)reader["surname"],
-                    };
-                }
-                else
-                {
-                    return null;
+                        if (reader.Read())
+                        {
+                            return new Author
+                            {
+                                Id = (int)reader["id"],
+                                Name = (string)reader["name"],
+                                Surname = (string)reader["surname"],
+                            };
+                        }
+                        else
+                        {
+                            return null;
+                        }  
+                    }
                 }
             }
         }
@@ -128,16 +140,16 @@ namespace Library.SqlDal
             {
                 using (var con = new SqlConnection(config.ConnectionString))
                 {
-                    var cmnd = new SqlCommand("edite_author", con);
-                    cmnd.CommandType = CommandType.StoredProcedure;
-                    cmnd.Parameters.AddWithValue("@name", author.Name);
-                    cmnd.Parameters.AddWithValue("@surname", author.Surname);
-                    cmnd.Parameters.AddWithValue("@id", author.Id);
-
-                    con.Open();
-                    cmnd.ExecuteNonQuery();
-
-                    return true;
+                    using (var cmnd = new SqlCommand("author_edite", con))
+                    {
+                        cmnd.CommandType = CommandType.StoredProcedure;
+                        cmnd.Parameters.AddWithValue("@name", author.Name);
+                        cmnd.Parameters.AddWithValue("@surname", author.Surname);
+                        cmnd.Parameters.AddWithValue("@id", author.Id);
+                        con.Open();
+                        cmnd.ExecuteNonQuery();
+                        return true; 
+                    }
                 }
             }
             catch

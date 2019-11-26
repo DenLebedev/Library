@@ -5,12 +5,14 @@ using System;
 using System.Data.SqlClient;
 using System.Collections.Generic;
 using System.Linq;
+using Library.LogicValidation;
 
 namespace Library.CatalogueLogic
 {
     public class AuthorLogic : IAuthorLogic
     {
         private readonly IAuthorDao authors;
+        readonly AuthorValidation  validation = new AuthorValidation();
 
         public AuthorLogic(IAuthorDao authorDao)
         {
@@ -18,22 +20,8 @@ namespace Library.CatalogueLogic
         }
 
         public bool Add(Author author)
-        {
-            if (author == null)
-            {
-                throw new ArgumentNullException(nameof(author));
-            }
-
-            if (string.IsNullOrWhiteSpace(author.Name))
-            {
-                throw new ArgumentException("Name");
-            }
-
-            if (string.IsNullOrWhiteSpace(author.Surname))
-            {
-                throw new ArgumentException("Surname");
-            }
-
+        {            
+            validation.Validate(author);
             return authors.Add(author);
         }
 
