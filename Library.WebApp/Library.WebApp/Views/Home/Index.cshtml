@@ -3,8 +3,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
 <div>
-    @Html.ActionLink("Go to Authors", "Index", "Author");
+    <ul>
+        <li class="navbar-text">@Html.ActionLink("Authors", "Index", "Author")</li>
+        <li class="navbar-text" style="padding-left: 2em;">@Html.ActionLink("Cities", "Index", "City")</li>
+    </ul>
 </div>

@@ -46,7 +46,11 @@ namespace Library.SqlDal
                         cmnd.Parameters["@id"].Direction = ParameterDirection.Output;
                         con.Open();
                         cmnd.ExecuteNonQuery();
-                        author.Id = (int)cmnd.Parameters["@id"].Value;
+                        int? id = cmnd.Parameters["@id"].Value as int?;
+                        if (id != null)
+                        {
+                            author.Id = (int)cmnd.Parameters["@id"].Value;
+                        }
                         return true; 
                     }
                 }
@@ -79,7 +83,7 @@ namespace Library.SqlDal
             }
         }
 
-        public IEnumerable<Author> GetAll()
+        public ICollection<Author> GetAll()
         {
             using (var con = new SqlConnection(config.ConnectionString))
             {
@@ -90,15 +94,16 @@ namespace Library.SqlDal
 
                     using (var reader = cmnd.ExecuteReader())
                     {
+                        var authors = new List<Author>();
                         while (reader.Read())
                         {
-                            yield return new Author
-                            {
-                                Id = (int)reader["id"],
-                                Name = (string)reader["name"],
-                                Surname = (string)reader["surname"],
-                            };
-                        } 
+                            var author = new Author();
+                            author.Id = (int)reader["id"];
+                            author.Name = (string)reader["name"];
+                            author.Surname = (string)reader["surname"];
+                            authors.Add(author);
+                        }
+                        return authors;
                     }
                 }
             }

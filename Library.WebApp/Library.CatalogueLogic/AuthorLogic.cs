@@ -35,7 +35,7 @@ namespace Library.CatalogueLogic
             return authors.Edit(author);
         }
 
-        public IEnumerable<Author> GetAll()
+        public ICollection<Author> GetAll()
         {
             return authors.GetAll().ToList();
         }

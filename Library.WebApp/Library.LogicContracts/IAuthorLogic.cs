@@ -13,7 +13,7 @@ namespace Library.LogicContracts
 
         bool Edit(Author author);
 
-        IEnumerable<Author> GetAll();
+        ICollection<Author> GetAll();
 
         Author GetById(int id);
     }
