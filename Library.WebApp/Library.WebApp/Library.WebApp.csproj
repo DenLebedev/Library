@@ -182,7 +182,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthorController.cs" />
     <Compile Include="Controllers\CityController.cs" />
+    <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NewspaperNameController.cs" />
     <Compile Include="Controllers\PublishingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -214,6 +216,18 @@
     <Content Include="Views\City\Create.cshtml" />
     <Content Include="Views\City\Edit.cshtml" />
     <Content Include="Views\City\Delete.cshtml" />
+    <Content Include="Views\Publishing\Index.cshtml" />
+    <Content Include="Views\Publishing\Create.cshtml" />
+    <Content Include="Views\Publishing\Edit.cshtml" />
+    <Content Include="Views\Publishing\Delete.cshtml" />
+    <Content Include="Views\Country\Index.cshtml" />
+    <Content Include="Views\Country\Create.cshtml" />
+    <Content Include="Views\Country\Edit.cshtml" />
+    <Content Include="Views\Country\Delete.cshtml" />
+    <Content Include="Views\NewspaperName\Index.cshtml" />
+    <Content Include="Views\NewspaperName\Create.cshtml" />
+    <Content Include="Views\NewspaperName\Edit.cshtml" />
+    <Content Include="Views\NewspaperName\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -224,7 +238,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Publishing\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Library.Entities\Library.Entities.csproj">

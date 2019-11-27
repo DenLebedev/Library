@@ -8,36 +8,37 @@ using System.Web.Mvc;
 
 namespace Library.WebApp.Controllers
 {
-    public class CityController : Controller
+    public class NewspaperNameController : Controller
     {
-        private readonly ICityLogic cityLogic;
+        private readonly INewspaperNameLogic nameLogic;
 
-        public CityController(ICityLogic cityLogic)
+        public NewspaperNameController(INewspaperNameLogic nameLogic)
         {
-            this.cityLogic = cityLogic;
+            this.nameLogic = nameLogic;
         }
-        // GET: City
+
+        // GET: NewspaperName
         public ActionResult Index()
         {
-            var model = cityLogic.GetAll();
+            var model = nameLogic.GetAll();
             return View(model);
         }
 
-        // GET: City/Create
+        // GET: NewspaperName/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: City/Create
+        // POST: NewspaperName/Create
         [HttpPost]
-        public ActionResult Create(City model)
+        public ActionResult Create(NewspaperName model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    if (cityLogic.Add(model))
+                    if (nameLogic.Add(model))
                     {
                         return RedirectToAction("Index");
                     }
@@ -50,22 +51,22 @@ namespace Library.WebApp.Controllers
             }
         }
 
-        // GET: City/Edit/5
+        // GET: NewspaperName/Edit/5
         public ActionResult Edit(int id)
         {
-            var model = cityLogic.GetById(id);
+            var model = nameLogic.GetById(id);
             return View(model);
         }
 
-        // POST: City/Edit/5
+        // POST: NewspaperName/Edit/5
         [HttpPost]
-        public ActionResult Edit(City model)
+        public ActionResult Edit(NewspaperName model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    if (cityLogic.Edit(model))
+                    if (nameLogic.Edit(model))
                     {
                         return RedirectToAction("Index");
                     }
@@ -78,30 +79,30 @@ namespace Library.WebApp.Controllers
             }
         }
 
-        // GET: City/Delete/5
+        // GET: NewspaperName/Delete/5
         public ActionResult Delete(int id)
         {
-            var model = cityLogic.GetById(id);
+            var model = nameLogic.GetById(id);
             return View(model);
         }
 
-        // POST: City/Delete/5
+        // POST: NewspaperName/Delete/5
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
             try
             {
-                if (cityLogic.Delete(id))
+                if (nameLogic.Delete(id))
                 {
                     return RedirectToAction("Index");
                 }
 
-                var model = cityLogic.GetById(id);
+                var model = nameLogic.GetById(id);
                 return View(model);
             }
             catch
             {
-                var model = cityLogic.GetById(id);
+                var model = nameLogic.GetById(id);
                 return View(model);
             }
         }
