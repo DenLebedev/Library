@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Library.Entities;
+using Library.LogicContracts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,16 +10,18 @@ namespace Library.WebApp.Controllers
 {
     public class PublishingController : Controller
     {
+        private readonly IPublishingLogic publishingLogic;
+
+        public PublishingController(IPublishingLogic publishingLogic)
+        {
+            this.publishingLogic = publishingLogic;
+        }
+
         // GET: Publishing
         public ActionResult Index()
         {
-            return View();
-        }
-
-        // GET: Publishing/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
+            var model = publishingLogic.GetAll();
+            return View(model);
         }
 
         // GET: Publishing/Create
@@ -28,61 +32,78 @@ namespace Library.WebApp.Controllers
 
         // POST: Publishing/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Publishing model)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                { 
+                    if(publishingLogic.Add(model))
+                    {
+                        return RedirectToAction("Index");
+                    }
+                }
+                return View(model);
             }
             catch
             {
-                return View();
+                return View(model);
             }
         }
 
         // GET: Publishing/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var model = publishingLogic.GetById(id);
+            return View(model);
         }
 
         // POST: Publishing/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Publishing model)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    if (publishingLogic.Edit(model))
+                    {
+                        return RedirectToAction("Index");
+                    }
+                }
+                return View(model);
             }
             catch
             {
-                return View();
+                return View(model);
             }
         }
 
         // GET: Publishing/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var model = publishingLogic.GetById(id);
+            return View(model);
         }
 
         // POST: Publishing/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
         {
             try
             {
-                // TODO: Add delete logic here
+                if (publishingLogic.Delete(id))
+                {
+                    return RedirectToAction("Index");
+                }
 
-                return RedirectToAction("Index");
+                var model = publishingLogic.GetById(id);
+                return View(model);
             }
             catch
             {
-                return View();
+                var model = publishingLogic.GetById(id);
+                return View(model);
             }
         }
     }

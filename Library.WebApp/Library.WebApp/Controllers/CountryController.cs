@@ -8,36 +8,36 @@ using System.Web.Mvc;
 
 namespace Library.WebApp.Controllers
 {
-    public class CityController : Controller
+    public class CountryController : Controller
     {
-        private readonly ICityLogic cityLogic;
+        private readonly ICountryLogic countryLogic;
 
-        public CityController(ICityLogic cityLogic)
+        public CountryController(ICountryLogic countryLogic)
         {
-            this.cityLogic = cityLogic;
+            this.countryLogic = countryLogic;
         }
-        // GET: City
+        // GET: Country
         public ActionResult Index()
         {
-            var model = cityLogic.GetAll();
+            var model = countryLogic.GetAll();
             return View(model);
         }
 
-        // GET: City/Create
+        // GET: Country/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: City/Create
+        // POST: Country/Create
         [HttpPost]
-        public ActionResult Create(City model)
+        public ActionResult Create(Country model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    if (cityLogic.Add(model))
+                    if (countryLogic.Add(model))
                     {
                         return RedirectToAction("Index");
                     }
@@ -50,22 +50,22 @@ namespace Library.WebApp.Controllers
             }
         }
 
-        // GET: City/Edit/5
+        // GET: Country/Edit/5
         public ActionResult Edit(int id)
         {
-            var model = cityLogic.GetById(id);
+            var model = countryLogic.GetById(id);
             return View(model);
         }
 
-        // POST: City/Edit/5
+        // POST: Country/Edit/5
         [HttpPost]
-        public ActionResult Edit(City model)
+        public ActionResult Edit(Country model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    if (cityLogic.Edit(model))
+                    if (countryLogic.Edit(model))
                     {
                         return RedirectToAction("Index");
                     }
@@ -78,30 +78,30 @@ namespace Library.WebApp.Controllers
             }
         }
 
-        // GET: City/Delete/5
+        // GET: Country/Delete/5
         public ActionResult Delete(int id)
         {
-            var model = cityLogic.GetById(id);
+            var model = countryLogic.GetById(id);
             return View(model);
         }
 
-        // POST: City/Delete/5
+        // POST: Country/Delete/5
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
             try
             {
-                if (cityLogic.Delete(id))
+                if (countryLogic.Delete(id))
                 {
                     return RedirectToAction("Index");
                 }
 
-                var model = cityLogic.GetById(id);
+                var model = countryLogic.GetById(id);
                 return View(model);
             }
             catch
             {
-                var model = cityLogic.GetById(id);
+                var model = countryLogic.GetById(id);
                 return View(model);
             }
         }
