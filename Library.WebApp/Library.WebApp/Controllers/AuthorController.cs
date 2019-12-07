@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using Library.Entities;
 using Library.LogicContracts;
+using Library.WebApp.Models.ViewModels;
 
 namespace Library.WebApp.Controllers
 {
     public class AuthorController : Controller
     {
-        private readonly IAuthorLogic authorLogic;
+        private readonly IAuthorLogic authorLogic;   
 
         public AuthorController(IAuthorLogic authorLogic)
         {
@@ -20,7 +22,7 @@ namespace Library.WebApp.Controllers
         // GET: Author
         public ActionResult Index()
         {
-            var model = authorLogic.GetAll();
+            var model = Mapper.Map<IEnumerable<AuthorViewModel>>(authorLogic.GetAll());
             return View(model);
         }
 
@@ -51,7 +53,7 @@ namespace Library.WebApp.Controllers
         // GET: Author/Edit/5
         public ActionResult Edit(int id)
         {
-            var model = authorLogic.GetById(id);
+            var model = Mapper.Map<AuthorViewModel>(authorLogic.GetById(id));
             return View(model);
         }
 
@@ -91,12 +93,12 @@ namespace Library.WebApp.Controllers
                     return RedirectToAction("Index");
                 }
 
-                var model = authorLogic.GetById(id);
+                var model = Mapper.Map<AuthorViewModel>(authorLogic.GetById(id));
                 return View(model);
             }
             catch
             {
-                var model = authorLogic.GetById(id);
+                var model = Mapper.Map<AuthorViewModel>(authorLogic.GetById(id));
                 return View(model);
             }
         }

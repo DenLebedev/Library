@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.SqlDal", "Library.S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.NinjectConfig", "Library.NinjectConfig\Library.NinjectConfig.csproj", "{02AB7574-76CE-4552-8A8A-7F82D7B6D4D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.LogicValidation", "Library.LogicValidation\Library.LogicValidation.csproj", "{D085F733-D290-463F-A684-7BFBC727B80D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.LogicValidation", "Library.LogicValidation\Library.LogicValidation.csproj", "{D085F733-D290-463F-A684-7BFBC727B80D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
