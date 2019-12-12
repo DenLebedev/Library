@@ -1,4 +1,6 @@
 ﻿using Library.Entities;
+using Library.LogicContracts;
+using System.ComponentModel.DataAnnotations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,9 @@ namespace Library.WebApp.Models.ViewModels
 {
     public class CreateBookViewModel
     {
+        [Required(ErrorMessage = "This is a required field")]
+        [StringLength(300, ErrorMessage = "Name length can't be more than 300 characters")]
+
         public string Name { get; set; }
         public IEnumerable<SelectListItem> Authors { get; set; }
         public int AuthorId { get; set; }
@@ -16,10 +21,30 @@ namespace Library.WebApp.Models.ViewModels
         public int CityId { get; set; }
         public IEnumerable<SelectListItem> Publishings { get; set; }
         public int PublishingId { get; set; }
+
+        [Required(ErrorMessage = "This is a required field")]
+        [Range(1400, 9999, ErrorMessage = "The Year of publication is incorrect")]
         public int YearPublication { get; set; }
+
+        [RegularExpression(@"\b(?:ISBN(?:: ?| ))?((?:97[89])?\d{9}[\dx])\b", ErrorMessage = "Incorrect ISBN")]
         public string ISBN { get; set; }
+
+        [Required(ErrorMessage = "This is a required field")]
+        [RegularExpression(@"^[0-9]+$", ErrorMessage = "This field can only contain numbers")]
+        [Range(1, 9999, ErrorMessage = "The number of pages cannot be less than 1")]
         public int PageCount { get; set; }
+
+        [StringLength(2000, ErrorMessage = "Name length can't be more than 2000 characters")]
         public string Notes { get; set; }
+
+        public CreateBookViewModel(IAuthorLogic authorLogic, ICityLogic cityLogic, IPublishingLogic publishingLogic)
+        {
+            this.Authors = SetAuthors(authorLogic.GetAll().ToList());
+            this.Cities = SetCities(cityLogic.GetAll().ToList());
+            this.Publishings = SetPublishings(publishingLogic.GetAll().ToList());
+        }
+
+        public CreateBookViewModel() { }
 
         internal IEnumerable<SelectListItem> SetCities(List<City> cities)
         {

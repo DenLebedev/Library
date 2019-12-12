@@ -8,6 +8,8 @@ namespace Library.WebApp.Models.ViewModels
 {
     public class CreateAuthorViewModel
     {
+        //public int Id { get; set; }
+
         [Required(ErrorMessage = "This is a required field")]
         [StringLength(50, ErrorMessage = "Name length can't be more than 50 characters")]
         [RegularExpression(@"^([a-zA-ZА-Яа-яё '-])+$", ErrorMessage = "Name can contain only letters")]

@@ -1,5 +1,7 @@
-﻿using Library.Entities;
+﻿using AutoMapper;
+using Library.Entities;
 using Library.LogicContracts;
+using Library.WebApp.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +13,25 @@ namespace Library.WebApp.Controllers
     public class PublishingController : Controller
     {
         private readonly IPublishingLogic publishingLogic;
+        private readonly MapperConfiguration config;
+        private readonly IMapper mapper;
 
         public PublishingController(IPublishingLogic publishingLogic)
         {
             this.publishingLogic = publishingLogic;
+            this.config = new MapperConfiguration(cfg => {
+                cfg.CreateMap<Publishing, PublishingViewModel>();
+                cfg.CreateMap<CreatePublishingViewModel, Publishing>();
+                cfg.CreateMap<Publishing, EditPublishingViewModel>();
+                cfg.CreateMap<EditPublishingViewModel, Publishing>();
+            });
+            this.mapper = config.CreateMapper();
         }
 
         // GET: Publishing
         public ActionResult Index()
         {
-            var model = publishingLogic.GetAll();
+            var model = mapper.Map<IEnumerable<PublishingViewModel>>(publishingLogic.GetAll());
             return View(model);
         }
 
@@ -32,13 +43,14 @@ namespace Library.WebApp.Controllers
 
         // POST: Publishing/Create
         [HttpPost]
-        public ActionResult Create(Publishing model)
+        public ActionResult Create(CreatePublishingViewModel model)
         {
+            var publishing = mapper.Map<CreatePublishingViewModel, Publishing>(model);
             try
             {
                 if (ModelState.IsValid)
                 { 
-                    if(publishingLogic.Add(model))
+                    if(publishingLogic.Add(publishing))
                     {
                         return RedirectToAction("Index");
                     }
@@ -54,19 +66,20 @@ namespace Library.WebApp.Controllers
         // GET: Publishing/Edit/5
         public ActionResult Edit(int id)
         {
-            var model = publishingLogic.GetById(id);
+            var model = mapper.Map<Publishing, EditPublishingViewModel>(publishingLogic.GetById(id));
             return View(model);
         }
 
         // POST: Publishing/Edit/5
         [HttpPost]
-        public ActionResult Edit(Publishing model)
+        public ActionResult Edit(EditPublishingViewModel model)
         {
+            var publishing = mapper.Map<EditPublishingViewModel, Publishing>(model);
             try
             {
                 if (ModelState.IsValid)
                 {
-                    if (publishingLogic.Edit(model))
+                    if (publishingLogic.Edit(publishing))
                     {
                         return RedirectToAction("Index");
                     }
@@ -82,7 +95,7 @@ namespace Library.WebApp.Controllers
         // GET: Publishing/Delete/5
         public ActionResult Delete(int id)
         {
-            var model = publishingLogic.GetById(id);
+            var model = mapper.Map<Publishing, PublishingViewModel>(publishingLogic.GetById(id));
             return View(model);
         }
 
@@ -90,19 +103,17 @@ namespace Library.WebApp.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
+            var model = mapper.Map<Publishing, PublishingViewModel>(publishingLogic.GetById(id));
             try
             {
                 if (publishingLogic.Delete(id))
                 {
                     return RedirectToAction("Index");
                 }
-
-                var model = publishingLogic.GetById(id);
                 return View(model);
             }
             catch
             {
-                var model = publishingLogic.GetById(id);
                 return View(model);
             }
         }

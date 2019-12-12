@@ -1,5 +1,7 @@
-﻿using Library.Entities;
+﻿using AutoMapper;
+using Library.Entities;
 using Library.LogicContracts;
+using Library.WebApp.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +13,24 @@ namespace Library.WebApp.Controllers
     public class CityController : Controller
     {
         private readonly ICityLogic cityLogic;
+        private readonly MapperConfiguration config;
+        private readonly IMapper mapper;
 
         public CityController(ICityLogic cityLogic)
         {
             this.cityLogic = cityLogic;
+            this.config = new MapperConfiguration(cfg => {
+                cfg.CreateMap<City, CityViewModel>();
+                cfg.CreateMap<CreateCityViewModel, City>();
+                cfg.CreateMap<City, EditCityViewModel>();
+                cfg.CreateMap<EditCityViewModel, City>();
+            });
+            this.mapper = config.CreateMapper();
         }
         // GET: City
         public ActionResult Index()
         {
-            var model = cityLogic.GetAll();
+            var model = mapper.Map<IEnumerable<CityViewModel>>(cityLogic.GetAll());
             return View(model);
         }
 
@@ -31,13 +42,14 @@ namespace Library.WebApp.Controllers
 
         // POST: City/Create
         [HttpPost]
-        public ActionResult Create(City model)
+        public ActionResult Create(CreateCityViewModel model)
         {
+            var city = mapper.Map<CreateCityViewModel, City>(model);
             try
             {
                 if (ModelState.IsValid)
                 {
-                    if (cityLogic.Add(model))
+                    if (cityLogic.Add(city))
                     {
                         return RedirectToAction("Index");
                     }
@@ -53,19 +65,20 @@ namespace Library.WebApp.Controllers
         // GET: City/Edit/5
         public ActionResult Edit(int id)
         {
-            var model = cityLogic.GetById(id);
+            var model = mapper.Map<City, EditCityViewModel>(cityLogic.GetById(id));
             return View(model);
         }
 
         // POST: City/Edit/5
         [HttpPost]
-        public ActionResult Edit(City model)
+        public ActionResult Edit(EditCityViewModel model)
         {
+            var city = mapper.Map<EditCityViewModel,City>(model);
             try
             {
                 if (ModelState.IsValid)
                 {
-                    if (cityLogic.Edit(model))
+                    if (cityLogic.Edit(city))
                     {
                         return RedirectToAction("Index");
                     }
@@ -81,7 +94,7 @@ namespace Library.WebApp.Controllers
         // GET: City/Delete/5
         public ActionResult Delete(int id)
         {
-            var model = cityLogic.GetById(id);
+            var model = mapper.Map<City, CityViewModel>(cityLogic.GetById(id));
             return View(model);
         }
 
@@ -89,19 +102,17 @@ namespace Library.WebApp.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
+            var model = mapper.Map<City, CityViewModel>(cityLogic.GetById(id));
             try
             {
                 if (cityLogic.Delete(id))
                 {
                     return RedirectToAction("Index");
                 }
-
-                var model = cityLogic.GetById(id);
                 return View(model);
             }
             catch
             {
-                var model = cityLogic.GetById(id);
                 return View(model);
             }
         }

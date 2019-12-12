@@ -74,14 +74,32 @@ namespace Library.SqlDal
 
         public bool Edit(Book book)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var con = new SqlConnection(config.ConnectionString))
+                {
+                    using (var cmnd = new SqlCommand("book_edit", con))
+                    {
+                        cmnd.CommandType = CommandType.StoredProcedure;
+                        var jsonQuery = JsonConvert.SerializeObject(book);
+                        cmnd.Parameters.AddWithValue("@book", jsonQuery);
+                        con.Open();
+                        cmnd.ExecuteNonQuery();
+                        return true;
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public ICollection<Book> GetAll()
         {
             using (var con = new SqlConnection(config.ConnectionString))
             {
-                using (var cmnd = new SqlCommand("books_get_all", con))
+                using (var cmnd = new SqlCommand("publications_get_all", con))
                 {
                     cmnd.CommandType = CommandType.StoredProcedure;
                     con.Open();
@@ -92,23 +110,20 @@ namespace Library.SqlDal
                         while (reader.Read())
                         {
                             var book = new Book();
-
                             book.Id = (int)reader["Id"];
                             book.Name = (string)reader["Name"];
                             book.PageCount = (int)reader["PageCount"];
-                            book.Notes = (string)reader["Notes"];
-
+                            book.Notes = (reader["Notes"] == DBNull.Value) ? string.Empty : (string)reader["Notes"];
                             book.MarkDelete = reader.GetBoolean(reader.GetOrdinal("MarkDelete"));
-
                             book.YearPublication = (int)reader["YearPublication"];
-                            book.ISBN = (string)reader["ISBN"];
+                            book.ISBN = (reader["ISBN"] == DBNull.Value) ? string.Empty : (string)reader["ISBN"];
                             book.City.Id = (int)reader["CityId"];
                             book.City.Name = (string)reader["CityName"];
                             book.Publishing.Id = (int)reader["PublishingId"];
                             book.Publishing.Name = (string)reader["PublishingName"]; 
+                            book.Author.Id = (int)reader["AuthorId"];
                             book.Author.Name = (string)reader["AuthorName"]; 
                             book.Author.Surname = (string)reader["AuthorSurname"];
-
                             books.Add(book);
                         }
                         return books;
@@ -135,14 +150,15 @@ namespace Library.SqlDal
                             book.Id = (int)reader["Id"];
                             book.Name = (string)reader["Name"];
                             book.PageCount = (int)reader["PageCount"];
-                            book.Notes = (string)reader["Notes"];
+                            book.Notes = (reader["Notes"] == DBNull.Value) ? string.Empty : (string)reader["Notes"];
                             book.MarkDelete = reader.GetBoolean(reader.GetOrdinal("MarkDelete"));
                             book.YearPublication = (int)reader["YearPublication"];
-                            book.ISBN = (string)reader["ISBN"];
+                            book.ISBN = (reader["ISBN"] == DBNull.Value) ? string.Empty : (string)reader["ISBN"];
                             book.City.Id = (int)reader["CityId"];
                             book.City.Name = (string)reader["CityName"];
                             book.Publishing.Id = (int)reader["PublishingId"];
                             book.Publishing.Name = (string)reader["PublishingName"];
+                            book.Author.Id = (int)reader["AuthorId"];
                             book.Author.Name = (string)reader["AuthorName"];
                             book.Author.Surname = (string)reader["AuthorSurname"];
 

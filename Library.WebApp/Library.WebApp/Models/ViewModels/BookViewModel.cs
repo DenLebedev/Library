@@ -17,7 +17,7 @@ namespace Library.WebApp.Models.ViewModels
         public string ISBN { get; set; }
         public int PageCount { get; set; }
         public string Notes { get; set; }
-        public bool MarkDelete { get; set; }
+        //public bool MarkDelete { get; set; }
 
         public BookViewModel()
         {

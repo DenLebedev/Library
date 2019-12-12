@@ -1,13 +1,17 @@
-﻿@model Library.Entities.Book
+﻿@model DetailsBookViewModel
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+    <h4>Book details</h4>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Delete", "Delete", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
 
 <div>
-    <h4>Book</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -76,7 +80,4 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
