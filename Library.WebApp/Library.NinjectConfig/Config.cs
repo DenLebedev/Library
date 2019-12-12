@@ -15,6 +15,8 @@ namespace Library.NinjectConfig
         /// <param name="kernel">The kernel.</param>
         public static void RegisterServices(IKernel kernel)
         {
+            #region BL
+
             kernel
                 .Bind<SqlDal.SqlDalConfig>()
                 .To<SqlDal.SqlDalConfig>()
@@ -47,6 +49,15 @@ namespace Library.NinjectConfig
                 .InSingletonScope();
 
             kernel
+                .Bind<IBookLogic>()
+                .To<CatalogueLogic.BookLogic>()
+                .InSingletonScope();
+
+            #endregion
+
+            #region DAL
+
+            kernel
                 .Bind<IAuthorDao>()
                 .To<SqlDal.AuthorDao>()
                 .InSingletonScope();
@@ -70,6 +81,13 @@ namespace Library.NinjectConfig
                 .Bind<INewspaperNameDao>()
                 .To<SqlDal.NewspaperNameDao>()
                 .InSingletonScope();
+
+            kernel
+                .Bind<IBookDao>()
+                .To<SqlDal.BookDao>()
+                .InSingletonScope();
+
+            #endregion
         }
     }
 }

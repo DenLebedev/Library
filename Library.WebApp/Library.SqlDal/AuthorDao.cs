@@ -145,7 +145,7 @@ namespace Library.SqlDal
             {
                 using (var con = new SqlConnection(config.ConnectionString))
                 {
-                    using (var cmnd = new SqlCommand("author_edite", con))
+                    using (var cmnd = new SqlCommand("author_edit", con))
                     {
                         cmnd.CommandType = CommandType.StoredProcedure;
                         cmnd.Parameters.AddWithValue("@name", author.Name);

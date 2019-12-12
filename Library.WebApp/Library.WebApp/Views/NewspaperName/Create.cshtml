@@ -1,4 +1,4 @@
-﻿@model Library.Entities.NewspaperName
+﻿@model CreateNewspaperNameViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -6,10 +6,10 @@
 
 <h4>Create</h4>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>NewspaperName</h4>
         <hr />
@@ -33,3 +33,8 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+@section scripts {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

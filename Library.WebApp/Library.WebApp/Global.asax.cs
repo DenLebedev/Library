@@ -13,6 +13,7 @@ namespace Library.WebApp
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            //AutoMapperConfig.RegisterMaps();
         }
     }
 }
