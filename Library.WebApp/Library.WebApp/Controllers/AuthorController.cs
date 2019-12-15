@@ -10,6 +10,7 @@ using Library.WebApp.Models.ViewModels;
 
 namespace Library.WebApp.Controllers
 {
+    [Authorize(Roles = "administartor")]
     public class AuthorController : Controller
     {
         private readonly IAuthorLogic authorLogic;

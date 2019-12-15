@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [LibraryCatalogueDB]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  Database [LibraryCatalogueDB]    Script Date: 15.12.2019 15:53:14 ******/
 CREATE DATABASE [LibraryCatalogueDB]
  CONTAINMENT = NONE
 GO
@@ -83,7 +83,7 @@ ALTER DATABASE SCOPED CONFIGURATION SET QUERY_OPTIMIZER_HOTFIXES = OFF;
 GO
 USE [LibraryCatalogueDB]
 GO
-/****** Object:  Table [dbo].[authors]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  Table [dbo].[authors]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -98,7 +98,7 @@ CREATE TABLE [dbo].[authors](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[books]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  Table [dbo].[books]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -115,7 +115,7 @@ CREATE TABLE [dbo].[books](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[books_authors]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  Table [dbo].[books_authors]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -130,7 +130,7 @@ CREATE TABLE [dbo].[books_authors](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[cities]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  Table [dbo].[cities]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -144,7 +144,7 @@ CREATE TABLE [dbo].[cities](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[countries]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  Table [dbo].[countries]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -158,7 +158,7 @@ CREATE TABLE [dbo].[countries](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[logs]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  Table [dbo].[logs]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -176,7 +176,7 @@ CREATE TABLE [dbo].[logs](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[newspapers]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  Table [dbo].[newspapers]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -195,7 +195,7 @@ CREATE TABLE [dbo].[newspapers](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[newspapers_names]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  Table [dbo].[newspapers_names]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -209,7 +209,7 @@ CREATE TABLE [dbo].[newspapers_names](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[patents]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  Table [dbo].[patents]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -226,7 +226,7 @@ CREATE TABLE [dbo].[patents](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[patents_athors]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  Table [dbo].[patents_athors]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -241,7 +241,7 @@ CREATE TABLE [dbo].[patents_athors](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[publications]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  Table [dbo].[publications]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -258,7 +258,7 @@ CREATE TABLE [dbo].[publications](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[publications_types]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  Table [dbo].[publications_types]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -272,7 +272,7 @@ CREATE TABLE [dbo].[publications_types](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[publishings]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  Table [dbo].[publishings]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -286,18 +286,39 @@ CREATE TABLE [dbo].[publishings](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[users]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  Table [dbo].[roles]    Script Date: 15.12.2019 15:53:16 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[roles](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[role_name] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_roles] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[users]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[users](
-	[id] [int] NOT NULL,
-	[login] [nvarchar](30) NOT NULL,
-	[password] [nvarchar](100) NULL
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[username] [nvarchar](50) NOT NULL,
+	[password] [nvarchar](50) NOT NULL,
+	[role_id] [int] NOT NULL,
+ CONSTRAINT [PK_users] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[publications] ADD  CONSTRAINT [DF_catalogue_carts_mark_delete]  DEFAULT ((0)) FOR [mark_delete]
+GO
+ALTER TABLE [dbo].[users] ADD  CONSTRAINT [DF_users_role_id]  DEFAULT ((1)) FOR [role_id]
 GO
 ALTER TABLE [dbo].[books_authors]  WITH CHECK ADD  CONSTRAINT [FK_books_authors_authors] FOREIGN KEY([author_id])
 REFERENCES [dbo].[authors] ([id])
@@ -349,7 +370,12 @@ REFERENCES [dbo].[patents] ([id])
 GO
 ALTER TABLE [dbo].[patents_athors] CHECK CONSTRAINT [FK_patents_athors_patents]
 GO
-/****** Object:  StoredProcedure [dbo].[author_add]    Script Date: 12.12.2019 23:05:36 ******/
+ALTER TABLE [dbo].[users]  WITH CHECK ADD  CONSTRAINT [FK_users_roles] FOREIGN KEY([role_id])
+REFERENCES [dbo].[roles] ([id])
+GO
+ALTER TABLE [dbo].[users] CHECK CONSTRAINT [FK_users_roles]
+GO
+/****** Object:  StoredProcedure [dbo].[author_add]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -371,7 +397,7 @@ BEGIN
 	SET @id = @@IDENTITY
 END
 GO
-/****** Object:  StoredProcedure [dbo].[author_delete]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[author_delete]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -388,7 +414,7 @@ BEGIN
 	DELETE FROM dbo.authors WHERE id = @id
 END
 GO
-/****** Object:  StoredProcedure [dbo].[author_edit]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[author_edit]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -405,7 +431,7 @@ BEGIN
     UPDATE dbo.authors SET [name] = @Name, surname = @Surname WHERE id = @Id
 END
 GO
-/****** Object:  StoredProcedure [dbo].[author_get_by_id]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[author_get_by_id]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -420,7 +446,7 @@ BEGIN
 	SELECT TOP 1 id, [name], surname FROM dbo.authors WHERE id=@Id
 END
 GO
-/****** Object:  StoredProcedure [dbo].[authors_get_all]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[authors_get_all]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -435,7 +461,7 @@ BEGIN
     SELECT id, [name], surname FROM dbo.authors
 END
 GO
-/****** Object:  StoredProcedure [dbo].[book_add]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[book_add]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -499,7 +525,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[book_delete]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[book_delete]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -515,7 +541,7 @@ BEGIN
 	DELETE FROM dbo.publications WHERE id = @id
 END
 GO
-/****** Object:  StoredProcedure [dbo].[book_edit]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[book_edit]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -575,7 +601,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[book_get_by_id]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[book_get_by_id]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -611,7 +637,7 @@ BEGIN
 	 WHERE p.id = @Id
 END
 GO
-/****** Object:  StoredProcedure [dbo].[cities_get_all]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[cities_get_all]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -626,7 +652,7 @@ BEGIN
     SELECT id, [name] FROM dbo.cities
 END
 GO
-/****** Object:  StoredProcedure [dbo].[city_add]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[city_add]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -646,7 +672,7 @@ BEGIN
 	SET @id = @@IDENTITY
 END
 GO
-/****** Object:  StoredProcedure [dbo].[city_delete]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[city_delete]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -662,7 +688,7 @@ BEGIN
 	DELETE FROM dbo.cities WHERE id = @id
 END
 GO
-/****** Object:  StoredProcedure [dbo].[city_edite]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[city_edite]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -678,7 +704,7 @@ BEGIN
 	UPDATE dbo.cities SET [name] = @Name WHERE id = @Id
 END
 GO
-/****** Object:  StoredProcedure [dbo].[city_get_by_id]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[city_get_by_id]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -693,7 +719,7 @@ BEGIN
 	SELECT TOP 1 id, [name] FROM dbo.cities WHERE id=@Id
 END
 GO
-/****** Object:  StoredProcedure [dbo].[countries_get_all]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[countries_get_all]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -708,7 +734,7 @@ BEGIN
     SELECT id, [name] FROM dbo.countries
 END
 GO
-/****** Object:  StoredProcedure [dbo].[country_add]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[country_add]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -728,7 +754,7 @@ BEGIN
 	SET @id = @@IDENTITY
 END
 GO
-/****** Object:  StoredProcedure [dbo].[country_delete]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[country_delete]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -744,7 +770,7 @@ BEGIN
 	DELETE FROM dbo.countries WHERE id = @id
 END
 GO
-/****** Object:  StoredProcedure [dbo].[country_edite]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[country_edite]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -760,7 +786,7 @@ BEGIN
 	UPDATE dbo.countries SET [name] = @Name WHERE id = @Id
 END
 GO
-/****** Object:  StoredProcedure [dbo].[country_get_by_id]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[country_get_by_id]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -775,7 +801,7 @@ BEGIN
 	SELECT TOP 1 id, [name] FROM dbo.countries WHERE id=@Id
 END
 GO
-/****** Object:  StoredProcedure [dbo].[newspaper_name_add]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[newspaper_name_add]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -795,7 +821,7 @@ BEGIN
 	SET @id = @@IDENTITY
 END
 GO
-/****** Object:  StoredProcedure [dbo].[newspaper_name_delete]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[newspaper_name_delete]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -811,7 +837,7 @@ BEGIN
 	DELETE FROM dbo.newspapers_names WHERE id = @id
 END
 GO
-/****** Object:  StoredProcedure [dbo].[newspaper_name_edite]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[newspaper_name_edite]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -827,7 +853,7 @@ BEGIN
     UPDATE dbo.newspapers_names SET [name] = @Name WHERE id = @Id
 END
 GO
-/****** Object:  StoredProcedure [dbo].[newspaper_name_get_by_id]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[newspaper_name_get_by_id]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -842,7 +868,7 @@ BEGIN
 	SELECT TOP 1 id, [name] FROM dbo.newspapers_names WHERE id=@Id
 END
 GO
-/****** Object:  StoredProcedure [dbo].[newspapers_names_get_all]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[newspapers_names_get_all]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -857,7 +883,7 @@ BEGIN
     SELECT id, [name] FROM dbo.newspapers_names
 END
 GO
-/****** Object:  StoredProcedure [dbo].[publications_get_all]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[publications_get_all]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -892,7 +918,42 @@ BEGIN
 	ON au.book_id = p.id
 END
 GO
-/****** Object:  StoredProcedure [dbo].[publishing_add]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[publications_get_top_ten]    Script Date: 15.12.2019 15:53:16 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[publications_get_top_ten]
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+    SELECT TOP 10
+	p.id AS [Id]
+	, p.[name] AS [Name]
+	, p.page_count AS [PageCount]
+	, p.notes AS [Notes]
+	, p.mark_delete AS [MarkDelete]
+	, b.year_publication AS [YearPublication]
+	, b.ISBN AS [ISBN]
+	, b.city_id AS [CityId]
+	, c.[name] AS [CityName]
+	, b.publishing_id AS [PublishingId]
+	, pb.[name] AS [PublishingName]
+	, au.author_id AS [AuthorId]
+	, au.[name] AS [AuthorName]
+	, au.surname AS [AuthorSurname]
+	FROM dbo.publications p
+	JOIN dbo.books b ON b.id = p.id
+	JOIN dbo.cities c ON b.city_id = c.id
+	JOIN dbo.publishings pb ON b.publishing_id = pb.id
+	JOIN (SELECT ba.book_id, ba.author_id, a.[name], a.surname FROM dbo.books_authors ba, authors a WHERE ba.author_id = a.id) AS au
+	ON au.book_id = p.id
+	ORDER BY p.id DESC
+END
+GO
+/****** Object:  StoredProcedure [dbo].[publishing_add]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -912,7 +973,7 @@ BEGIN
 	SET @id = @@IDENTITY
 END
 GO
-/****** Object:  StoredProcedure [dbo].[publishing_delete]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[publishing_delete]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -928,7 +989,7 @@ BEGIN
 	DELETE FROM dbo.publishings WHERE id = @id
 END
 GO
-/****** Object:  StoredProcedure [dbo].[publishing_edite]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[publishing_edite]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -944,7 +1005,7 @@ BEGIN
 	UPDATE dbo.publishings SET [name] = @Name WHERE id = @Id
 END
 GO
-/****** Object:  StoredProcedure [dbo].[publishing_get_all]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[publishing_get_all]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -959,7 +1020,7 @@ BEGIN
     SELECT id, [name] FROM dbo.publishings
 END
 GO
-/****** Object:  StoredProcedure [dbo].[publishing_get_by_id]    Script Date: 12.12.2019 23:05:36 ******/
+/****** Object:  StoredProcedure [dbo].[publishing_get_by_id]    Script Date: 15.12.2019 15:53:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -972,6 +1033,167 @@ BEGIN
 	SET NOCOUNT ON;
 
 	SELECT TOP 1 id, [name] FROM dbo.publishings WHERE id=@Id
+END
+GO
+/****** Object:  StoredProcedure [dbo].[user_add]    Script Date: 15.12.2019 15:53:16 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[user_add]
+	@name nvarchar(50),
+	@password nvarchar(50),
+	@id int OUTPUT
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+    IF NOT EXISTS (SELECT 1 FROM dbo.users u WHERE u.[username] = @name)
+	INSERT INTO dbo.users ([username], [password])
+	VALUES (@name, @password)
+
+	SET @id = @@IDENTITY
+END
+GO
+/****** Object:  StoredProcedure [dbo].[user_delete]    Script Date: 15.12.2019 15:53:16 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[user_delete]
+	@id int
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+    IF EXISTS(SELECT 1 FROM dbo.users u WHERE u.id = @id)	
+	DELETE FROM dbo.users WHERE id = @id
+END
+GO
+/****** Object:  StoredProcedure [dbo].[user_edit]    Script Date: 15.12.2019 15:53:16 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[user_edit]
+	@id int,
+	@name nvarchar(50),
+	@role_id int
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+    IF EXISTS(SELECT 1 FROM dbo.users u WHERE u.id = @id)
+	UPDATE dbo.users SET [username] = @name, [role_id] = @role_id WHERE id = @Id
+END
+GO
+/****** Object:  StoredProcedure [dbo].[user_get_by_id]    Script Date: 15.12.2019 15:53:16 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[user_get_by_id]
+	@id int
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+    SELECT TOP 1 
+	u.id
+	, u.username
+	, u.role_id 
+	, r.role_name
+	FROM dbo.users u 
+	JOIN dbo.roles r
+	ON u.role_id = r.id
+	WHERE u.id = @Id
+END
+GO
+/****** Object:  StoredProcedure [dbo].[user_get_by_name]    Script Date: 15.12.2019 15:53:16 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[user_get_by_name]
+	@name nvarchar(50)
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	IF EXISTS (SELECT 1 FROM dbo.users u WHERE u.[username] = @name)
+    (SELECT u.username AS [name], r.role_name AS [role_name] FROM dbo.users u 
+	JOIN dbo.roles r 
+	ON u.role_id = r.id
+	WHERE u.[username] = @name)
+END
+GO
+/****** Object:  StoredProcedure [dbo].[user_login]    Script Date: 15.12.2019 15:53:16 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[user_login]
+	@name nvarchar(50),
+	@password nvarchar(50),
+	@id int OUTPUT,
+	@role_name nvarchar(50) OUTPUT,
+	@role_id int OUTPUT
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	IF NOT EXISTS (SELECT 1 FROM dbo.users u WHERE u.[username] = @name AND u.[password] = @password)
+		SET @id = NULL
+	IF EXISTS (SELECT 1 FROM dbo.users u WHERE u.[username] = @name AND u.[password] = @password)
+		SET @id = (SELECT u.id FROM dbo.users u WHERE u.[username] = @name AND u.[password] = @password)
+		SET @role_id = (SELECT u.role_id FROM dbo.users u WHERE u.[username] = @name AND u.[password] = @password)
+		SET @role_name = (SELECT r.role_name FROM dbo.roles r WHERE r.[id] = @role_id)
+END
+GO
+/****** Object:  StoredProcedure [dbo].[user_roles_get_all]    Script Date: 15.12.2019 15:53:16 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[user_roles_get_all]
+
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+    SELECT 
+	r.[id]
+	, r.[role_name]
+	FROM dbo.roles r
+END
+GO
+/****** Object:  StoredProcedure [dbo].[users_get_all]    Script Date: 15.12.2019 15:53:16 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[users_get_all]
+
+AS
+BEGIN
+	SET NOCOUNT ON;
+	
+	SELECT 
+	u.id AS [id]
+	, u.username AS [name]
+	, u.role_id AS [role_id]
+	, r.role_name AS [role]
+	FROM dbo.users u
+	JOIN dbo.roles r
+	ON u.role_id = r.id
 END
 GO
 USE [master]

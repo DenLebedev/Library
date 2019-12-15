@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace Library.WebApp.Controllers
 {
+    [Authorize(Roles = "administartor")]
     public class NewspaperNameController : Controller
     {
         private readonly INewspaperNameLogic nameLogic;

@@ -1,0 +1,18 @@
+﻿@model IEnumerable<IndexBookViewModel>
+
+<table class="table">
+    <tr>
+        <th>
+            Last added books:
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(@Html.DisplayFor(modelItem => item.IndexName).ToString(), "Details", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>

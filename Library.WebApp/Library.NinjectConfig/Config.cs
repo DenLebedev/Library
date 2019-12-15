@@ -53,6 +53,16 @@ namespace Library.NinjectConfig
                 .To<CatalogueLogic.BookLogic>()
                 .InSingletonScope();
 
+            kernel
+                .Bind<IUserLogic>()
+                .To<CatalogueLogic.UserLogic>()
+                .InSingletonScope();
+
+            kernel
+                .Bind<IUserRoleLogic>()
+                .To<CatalogueLogic.UserRoleLogic>()
+                .InSingletonScope();
+
             #endregion
 
             #region DAL
@@ -85,6 +95,16 @@ namespace Library.NinjectConfig
             kernel
                 .Bind<IBookDao>()
                 .To<SqlDal.BookDao>()
+                .InSingletonScope();
+
+            kernel
+                .Bind<IUserDao>()
+                .To<SqlDal.UserDao>()
+                .InSingletonScope();
+
+            kernel
+                .Bind<IUserRoleDao>()
+                .To<SqlDal.UserRoleDao>()
                 .InSingletonScope();
 
             #endregion

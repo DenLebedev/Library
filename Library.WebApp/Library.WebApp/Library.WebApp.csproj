@@ -194,14 +194,18 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewspaperNameController.cs" />
     <Compile Include="Controllers\PublishingController.cs" />
+    <Compile Include="Controllers\UserAdministrationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\LibraryAppRoleProvider.cs" />
     <Compile Include="Models\ViewModels\CityViewModel.cs" />
     <Compile Include="Models\ViewModels\CountryViewModel.cs" />
     <Compile Include="Models\ViewModels\CreateCountryViewModels.cs" />
     <Compile Include="Models\ViewModels\CreateNewspaperNameViewModel.cs" />
     <Compile Include="Models\ViewModels\CreatePublishingViewModel.cs" />
+    <Compile Include="Models\ViewModels\DeleteUserViewModel.cs" />
+    <Compile Include="Models\ViewModels\EditUserViewModel.cs" />
     <Compile Include="Models\ViewModels\EditCityViewModel .cs" />
     <Compile Include="Models\ViewModels\CreateCityViewModel.cs" />
     <Compile Include="Models\ViewModels\DeleteAuthorViewModel.cs" />
@@ -217,8 +221,11 @@
     <Compile Include="Models\ViewModels\DeleteBookViewModel.cs" />
     <Compile Include="Models\ViewModels\DetailsBookViewModel.cs" />
     <Compile Include="Models\ViewModels\IndexBookViewModel.cs" />
+    <Compile Include="Models\ViewModels\IndexUserViewModel.cs" />
+    <Compile Include="Models\ViewModels\LoginViewModel.cs" />
     <Compile Include="Models\ViewModels\NewspaperNameViewModel.cs" />
     <Compile Include="Models\ViewModels\PublishingViewModel.cs" />
+    <Compile Include="Models\ViewModels\RegistrationViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -263,6 +270,20 @@
     <Content Include="Views\Book\Index.cshtml" />
     <Content Include="Views\Book\Delete.cshtml" />
     <Content Include="Views\Book\Edit.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_LogoutPartial.cshtml" />
+    <Content Include="Views\Book\_TopTenPartial.cshtml" />
+    <Content Include="Views\Shared\_MainAdminMenuPartial.cshtml" />
+    <Content Include="Views\Shared\_MainMenuPartial.cshtml" />
+    <Content Include="Views\Book\_DetailAdminMenuPartial.cshtml" />
+    <Content Include="Views\Book\_DetailUserMenuPartial.cshtml" />
+    <Content Include="Views\Book\_DetailGuestMenuPartial.cshtml" />
+    <Content Include="Views\Shared\_MainUserMenuPartial.cshtml" />
+    <Content Include="Views\UserAdministration\Index.cshtml" />
+    <Content Include="Views\UserAdministration\Edit.cshtml" />
+    <Content Include="Views\UserAdministration\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -272,6 +293,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Library.Entities\Library.Entities.csproj">

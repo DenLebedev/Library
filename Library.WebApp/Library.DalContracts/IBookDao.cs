@@ -16,5 +16,7 @@ namespace Library.DalContracts
         ICollection<Book> GetAll();
 
         Book GetById(int id);
+
+        ICollection<Book> GetTopTen();
     }
 }

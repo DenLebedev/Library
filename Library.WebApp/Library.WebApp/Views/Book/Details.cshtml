@@ -5,11 +5,9 @@
 }
 
     <h4>Book details</h4>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Delete", "Delete", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+    <div>
+        @Html.Action("DetailMenuBlock", "Book", Model.Id)
+    </div>
 
 <div>
     <hr />
