@@ -25,8 +25,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.SqlDal", "Library.S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.NinjectConfig", "Library.NinjectConfig\Library.NinjectConfig.csproj", "{02AB7574-76CE-4552-8A8A-7F82D7B6D4D6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.LogicValidation", "Library.LogicValidation\Library.LogicValidation.csproj", "{D085F733-D290-463F-A684-7BFBC727B80D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,10 +59,6 @@ Global
 		{02AB7574-76CE-4552-8A8A-7F82D7B6D4D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02AB7574-76CE-4552-8A8A-7F82D7B6D4D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02AB7574-76CE-4552-8A8A-7F82D7B6D4D6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D085F733-D290-463F-A684-7BFBC727B80D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D085F733-D290-463F-A684-7BFBC727B80D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D085F733-D290-463F-A684-7BFBC727B80D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D085F733-D290-463F-A684-7BFBC727B80D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,7 +71,6 @@ Global
 		{B28AC167-F318-45AA-80C4-15DF71ACD09C} = {ADD37C40-27E6-4F67-BF46-D09F57C3B4E5}
 		{83DBF8FC-7A13-43FE-9D5E-C89962108FD8} = {ADD37C40-27E6-4F67-BF46-D09F57C3B4E5}
 		{02AB7574-76CE-4552-8A8A-7F82D7B6D4D6} = {2D981325-F8BD-4D23-AF5A-85AFA049FFCB}
-		{D085F733-D290-463F-A684-7BFBC727B80D} = {74FA05C2-C312-4620-B584-F84F2469D70B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {548BFAB4-AEFD-4AA0-B683-B0C3B8EED764}

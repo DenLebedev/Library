@@ -66,11 +66,6 @@ namespace Library.WebApp.Controllers
                 ModelState.AddModelError("Name", "Name length can't be more than 50 characters");
             }
 
-            if (new Regex(@"^([a-zA-ZА-Яа-яё])+$").IsMatch(model.Name))
-            {
-                ModelState.AddModelError("Username", "Name can contain only letters");
-            }
-
             try
             {
                 if (ModelState.IsValid && userLogic.Edit(user))

@@ -87,6 +87,16 @@ namespace Library.WebApp.Controllers
         [HttpPost]
         public ActionResult Create(CreateBookViewModel model)
         {
+            if (model.YearPublication < 1400)
+            {
+                ModelState.AddModelError("", "The Year of publication may not be less than 1400");
+            }
+
+            if (model.YearPublication > DateTime.UtcNow.Year)
+            {
+                ModelState.AddModelError("", "The Year of publication may not be more than the current year");
+            }
+
             var book = mapper.Map<CreateBookViewModel, Book>(model);
             try
             {
