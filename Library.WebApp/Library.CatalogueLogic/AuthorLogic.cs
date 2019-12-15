@@ -5,23 +5,34 @@ using System;
 using System.Data.SqlClient;
 using System.Collections.Generic;
 using System.Linq;
-using Library.LogicValidation;
+using NLog;
 
 namespace Library.CatalogueLogic
 {
     public class AuthorLogic : IAuthorLogic
     {
         private readonly IAuthorDao authors;
-        readonly AuthorValidation  validation = new AuthorValidation();
+        private readonly IAuthorValidationLogic validation;
+        private static Logger logger = LogManager.GetCurrentClassLogger();
 
-        public AuthorLogic(IAuthorDao authorDao)
+        public AuthorLogic(IAuthorDao authorDao, IAuthorValidationLogic authorValidation)
         {
             this.authors = authorDao;
+            this.validation = authorValidation;
         }
 
         public bool Add(Author author)
-        {            
-            validation.Validate(author);
+        {
+            if (validation.Validate(author).Count > 0)
+            {
+                foreach (var res in validation.Validate(author))
+                {
+                    if (res.IsValidate)
+                    {
+                        logger.Error(res.ValidationMessage.ToString());
+                    }
+                }
+            }
             return authors.Add(author);
         }
 
@@ -32,6 +43,16 @@ namespace Library.CatalogueLogic
 
         public bool Edit(Author author)
         {
+            if (validation.Validate(author).Count > 0)
+            {
+                foreach (var res in validation.Validate(author))
+                {
+                    if (res.IsValidate)
+                    {
+                        logger.Error(res.ValidationMessage.ToString());
+                    }
+                }
+            }
             return authors.Edit(author);
         }
 

@@ -65,6 +65,25 @@ namespace Library.NinjectConfig
 
             #endregion
 
+            #region BLValidation
+
+            kernel
+                .Bind<IAuthorValidationLogic>()
+                .To<CatalogueLogic.AuthorValidationLogic>()
+                .InSingletonScope();
+
+            kernel
+                .Bind<IBookValidationLogic>()
+                .To<CatalogueLogic.BookValidationLogic>()
+                .InSingletonScope();
+
+            kernel
+                .Bind<IUserValidationLogic>()
+                .To<CatalogueLogic.UserValidationLogic>()
+                .InSingletonScope();
+
+            #endregion
+
             #region DAL
 
             kernel

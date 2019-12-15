@@ -52,10 +52,6 @@ namespace Library.WebApp.Controllers
             {
                 ModelState.AddModelError("Username", "Username length can't be more than 50 characters");
             }
-            if (new Regex(@"^([a-zA-ZА-Яа-яё])+$").IsMatch(model.Username))
-            {
-                ModelState.AddModelError("Username", "Username can contain only letters");
-            }
 
             if (model.Password == null)
             {

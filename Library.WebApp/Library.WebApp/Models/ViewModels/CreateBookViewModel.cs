@@ -13,8 +13,8 @@ namespace Library.WebApp.Models.ViewModels
     {
         [Required(ErrorMessage = "This is a required field")]
         [StringLength(300, ErrorMessage = "Name length can't be more than 300 characters")]
-
         public string Name { get; set; }
+
         public IEnumerable<SelectListItem> Authors { get; set; }
         public int AuthorId { get; set; }
         public IEnumerable<SelectListItem> Cities { get; set; }
@@ -23,7 +23,6 @@ namespace Library.WebApp.Models.ViewModels
         public int PublishingId { get; set; }
 
         [Required(ErrorMessage = "This is a required field")]
-        [Range(1400, 9999, ErrorMessage = "The Year of publication is incorrect")]
         public int YearPublication { get; set; }
 
         [RegularExpression(@"\b(?:ISBN(?:: ?| ))?((?:97[89])?\d{9}[\dx])\b", ErrorMessage = "Incorrect ISBN")]
