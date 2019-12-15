@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace Library.WebApp.Controllers
-{
+{    
     public class BookController : Controller
     {
         private readonly IBookLogic books;
@@ -50,6 +50,7 @@ namespace Library.WebApp.Controllers
             mapper = config.CreateMapper();
         }
 
+        [Authorize]
         // GET: Book
         public ActionResult Index()
         {
@@ -57,6 +58,15 @@ namespace Library.WebApp.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
+        [ChildActionOnly]
+        public ActionResult TopTen()
+        {
+            var model = mapper.Map<IEnumerable<IndexBookViewModel>>(books.GetTopTen());
+            return PartialView("_TopTenPartial", model);
+        }
+
+        [AllowAnonymous]
         // GET: Book/Details/5
         public ActionResult Details(int id)
         {
@@ -64,6 +74,7 @@ namespace Library.WebApp.Controllers
             return View(model);
         }
 
+        [Authorize]
         // GET: Book/Create
         public ActionResult Create()
         {
@@ -71,6 +82,7 @@ namespace Library.WebApp.Controllers
             return View(model);
         }
 
+        [Authorize]
         // POST: Book/Create
         [HttpPost]
         public ActionResult Create(CreateBookViewModel model)
@@ -93,6 +105,7 @@ namespace Library.WebApp.Controllers
             }
         }
 
+        [Authorize]
         // GET: Book/Edit/5
         public ActionResult Edit(int id)
         {
@@ -103,6 +116,7 @@ namespace Library.WebApp.Controllers
             return View(model);
         }
 
+        [Authorize]
         // POST: Book/Edit/5
         [HttpPost]
         public ActionResult Edit(EditBookViewModel model)
@@ -125,6 +139,7 @@ namespace Library.WebApp.Controllers
             }
         }
 
+        [Authorize]
         // GET: Book/Delete/5
         public ActionResult Delete(int id)
         {
@@ -132,6 +147,7 @@ namespace Library.WebApp.Controllers
             return View(model);
         }
 
+        [Authorize]
         // POST: Book/Delete/5
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
@@ -148,6 +164,27 @@ namespace Library.WebApp.Controllers
             catch
             {
                 return View(model);
+            }
+        }
+
+        [AllowAnonymous]
+        [ChildActionOnly]
+        public ActionResult DetailMenuBlock(int id)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("administartor"))
+                {
+                    return PartialView("_DetailAdminMenuPartial", id);
+                }
+                else
+                {
+                    return PartialView("_DetailUserMenuPartial");
+                }
+            }
+            else
+            {
+                return PartialView("_DetailGuestMenuPartial");
             }
         }
     }

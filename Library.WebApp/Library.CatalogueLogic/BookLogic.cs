@@ -41,5 +41,10 @@ namespace Library.CatalogueLogic
         {
             return books.GetById(id);
         }
+
+        public ICollection<Book> GetTopTen()
+        {
+            return books.GetTopTen().ToList();
+        }
     }
 }

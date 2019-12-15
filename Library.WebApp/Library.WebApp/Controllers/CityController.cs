@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace Library.WebApp.Controllers
 {
+    [Authorize(Roles = "administartor")]
     public class CityController : Controller
     {
         private readonly ICityLogic cityLogic;
