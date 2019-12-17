@@ -3,6 +3,7 @@ using System.Configuration;
 using Ninject;
 using Ninject.Web.Common;
 using Library.LogicContracts;
+using Library.LogicContracts.ValidationLogicContracts;
 using Library.DalContracts;
 
 namespace Library.NinjectConfig
@@ -69,17 +70,37 @@ namespace Library.NinjectConfig
 
             kernel
                 .Bind<IAuthorValidationLogic>()
-                .To<CatalogueLogic.AuthorValidationLogic>()
+                .To<CatalogueLogic.ValidationLogic.AuthorValidationLogic>()
                 .InSingletonScope();
 
             kernel
                 .Bind<IBookValidationLogic>()
-                .To<CatalogueLogic.BookValidationLogic>()
+                .To<CatalogueLogic.ValidationLogic.BookValidationLogic>()
+                .InSingletonScope();
+
+            kernel
+                .Bind<ICityValidationLogic>()
+                .To<CatalogueLogic.ValidationLogic.CityValidationLogic>()
+                .InSingletonScope();
+
+            kernel
+                .Bind<ICountryValidationLogic>()
+                .To<CatalogueLogic.ValidationLogic.CountryValidationLogic>()
+                .InSingletonScope();
+
+            kernel
+                .Bind<INewspaperNameValidationLogic>()
+                .To<CatalogueLogic.ValidationLogic.NewspaperNameValidationLogic>()
+                .InSingletonScope();
+
+            kernel
+                .Bind<IPublishingValidationLogic>()
+                .To<CatalogueLogic.ValidationLogic.PublishingValidationLogic>()
                 .InSingletonScope();
 
             kernel
                 .Bind<IUserValidationLogic>()
-                .To<CatalogueLogic.UserValidationLogic>()
+                .To<CatalogueLogic.ValidationLogic.UserValidationLogic>()
                 .InSingletonScope();
 
             #endregion

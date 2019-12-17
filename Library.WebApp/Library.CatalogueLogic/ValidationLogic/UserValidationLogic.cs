@@ -1,10 +1,10 @@
 ﻿using Library.Entities;
-using Library.LogicContracts;
+using Library.LogicContracts.ValidationLogicContracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Library.CatalogueLogic
+namespace Library.CatalogueLogic.ValidationLogic
 {
     public class UserValidationLogic : IUserValidationLogic
     {
