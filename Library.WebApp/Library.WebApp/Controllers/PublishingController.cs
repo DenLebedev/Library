@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Library.Entities;
 using Library.LogicContracts;
+using Library.WebApp.Models.MapperProfile;
 using Library.WebApp.Models.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -21,10 +22,7 @@ namespace Library.WebApp.Controllers
         {
             this.publishingLogic = publishingLogic;
             this.config = new MapperConfiguration(cfg => {
-                cfg.CreateMap<Publishing, PublishingViewModel>();
-                cfg.CreateMap<CreatePublishingViewModel, Publishing>();
-                cfg.CreateMap<Publishing, EditPublishingViewModel>();
-                cfg.CreateMap<EditPublishingViewModel, Publishing>();
+                cfg.AddProfile<PublishingAutoMapperProfile>();
             });
             this.mapper = config.CreateMapper();
         }

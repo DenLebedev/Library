@@ -211,6 +211,13 @@
     </Compile>
     <Compile Include="Models\LibraryAppRoleProvider.cs" />
     <Compile Include="Models\MapperProfile\AuthorAutoMapperProfile.cs" />
+    <Compile Include="Models\MapperProfile\BookAutoMapperProfile.cs" />
+    <Compile Include="Models\MapperProfile\CityAutoMapperProfile.cs" />
+    <Compile Include="Models\MapperProfile\CountryAutoMapperProfile.cs" />
+    <Compile Include="Models\MapperProfile\HomeAutoMapperProfile.cs" />
+    <Compile Include="Models\MapperProfile\NewspaperNameAutoMapperProfile.cs" />
+    <Compile Include="Models\MapperProfile\PublishingAutoMapperProfile.cs" />
+    <Compile Include="Models\MapperProfile\UserAdministartionAutoMapperProfile.cs" />
     <Compile Include="Models\ViewModels\CityViewModel.cs" />
     <Compile Include="Models\ViewModels\CountryViewModel.cs" />
     <Compile Include="Models\ViewModels\CreateCountryViewModels.cs" />

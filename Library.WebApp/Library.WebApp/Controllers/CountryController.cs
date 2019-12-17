@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Library.Entities;
 using Library.LogicContracts;
+using Library.WebApp.Models.MapperProfile;
 using Library.WebApp.Models.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -21,10 +22,7 @@ namespace Library.WebApp.Controllers
         {
             this.countryLogic = countryLogic;
             this.config = new MapperConfiguration(cfg => {
-                cfg.CreateMap<Country, CountryViewModel>();
-                cfg.CreateMap<CreateCountryViewModels, Country>();
-                cfg.CreateMap<Country, EditCountryViewModel>();
-                cfg.CreateMap<EditCountryViewModel, Country>();
+                cfg.AddProfile<CountryAutoMapperProfile>();
             });
             this.mapper = config.CreateMapper();
         }
