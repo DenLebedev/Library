@@ -61,7 +61,7 @@ namespace Library.WebApp.Controllers
                 ModelState.AddModelError("Name", "This is a required field");
             }
 
-            if (model.Name.Length < 50)
+            if (model.Name.Length > 50)
             {
                 ModelState.AddModelError("Name", "Name length can't be more than 50 characters");
             }

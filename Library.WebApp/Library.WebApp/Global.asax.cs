@@ -15,7 +15,6 @@ namespace Library.WebApp
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            //AutoMapperConfig.RegisterMaps();
             var kernel = (new Bootstrapper()).Kernel;
             kernel.Inject(Roles.Provider);
         }
