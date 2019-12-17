@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Library.Entities;
 using Library.LogicContracts;
+using Library.WebApp.Models.MapperProfile;
 using Library.WebApp.Models.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -27,25 +28,7 @@ namespace Library.WebApp.Controllers
             this.publishings = publishingLogic;
 
             config = new MapperConfiguration(cfg => {
-                cfg.CreateMap<Book, IndexBookViewModel>()
-                    .ForMember("IndexName", opt => opt.MapFrom(src => src.Author.Name + " " + src.Author.Surname + " - " + src.Name + " " + src.YearPublication));
-                cfg.CreateMap<Book, DetailsBookViewModel>();
-                cfg.CreateMap<Book, CreateBookViewModel>();
-                cfg.CreateMap<CreateBookViewModel, Book>()
-                    .ForMember(dest => dest.Id, opt => opt.Ignore())
-                    .ForMember(dest => dest.MarkDelete, opt => opt.Ignore())
-                    .ForPath(dest => dest.Author.Id, opt => opt.MapFrom(src => src.AuthorId))
-                    .ForPath(dest => dest.City.Id, opt => opt.MapFrom(src => src.CityId))
-                    .ForPath(dest => dest.Publishing.Id, opt => opt.MapFrom(src => src.PublishingId));
-                cfg.CreateMap<Book, EditBookViewModel>()
-                    .ForMember(dest => dest.AuthorId, opt => opt.MapFrom(src => src.Author.Id));
-                cfg.CreateMap<EditBookViewModel, Book>()
-                    .ForMember(dest => dest.MarkDelete, opt => opt.Ignore())
-                    .ForPath(dest => dest.Author.Id, opt => opt.MapFrom(src => src.AuthorId))
-                    .ForPath(dest => dest.City.Id, opt => opt.MapFrom(src => src.CityId))
-                    .ForPath(dest => dest.Publishing.Id, opt => opt.MapFrom(src => src.PublishingId));
-                cfg.CreateMap<Book, DeleteBookViewModel>()
-                    .ForMember("Name", opt => opt.MapFrom(src => src.Author.Name + " " + src.Author.Surname + " - " + src.Name + " " + src.YearPublication));
+                cfg.AddProfile<BookAutoMapperProfile>();
             });
             mapper = config.CreateMapper();
         }

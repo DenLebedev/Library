@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Library.LogicContracts
+namespace Library.LogicContracts.ValidationLogicContracts
 {
     public interface IUserValidationLogic
     {

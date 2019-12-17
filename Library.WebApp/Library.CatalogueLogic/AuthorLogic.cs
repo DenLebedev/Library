@@ -1,5 +1,6 @@
 ﻿using Library.Entities;
 using Library.LogicContracts;
+using Library.LogicContracts.ValidationLogicContracts;
 using Library.DalContracts;
 using System;
 using System.Data.SqlClient;

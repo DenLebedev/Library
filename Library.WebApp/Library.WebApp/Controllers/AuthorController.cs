@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using Library.Entities;
 using Library.LogicContracts;
+using Library.WebApp.Models.MapperProfile;
 using Library.WebApp.Models.ViewModels;
 
 namespace Library.WebApp.Controllers
@@ -20,13 +21,9 @@ namespace Library.WebApp.Controllers
         public AuthorController(IAuthorLogic authorLogic)
         {
             this.authorLogic = authorLogic;
-            config = new MapperConfiguration(cfg => {
-                cfg.CreateMap<CreateAuthorViewModel, Author>();
-                cfg.CreateMap<Author, IndexAuthorViewModel>();
-                cfg.CreateMap<Author, AuthorViewModel>();
-                cfg.CreateMap<AuthorViewModel, Author>();
-                cfg.CreateMap<Author, DeleteAuthorViewModel>()
-                    .ForMember("FullName", opt => opt.MapFrom(src => src.Name + " " + src.Surname));
+            config = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<AuthorAutoMapperProfile>();
             });
             mapper = config.CreateMapper();
         }
@@ -51,9 +48,12 @@ namespace Library.WebApp.Controllers
             var author = mapper.Map<CreateAuthorViewModel, Author>(model);
             try
             {
-                if (ModelState.IsValid && authorLogic.Add(author))
+                if (ModelState.IsValid)
                 {
-                    return RedirectToAction("Index");
+                    if (authorLogic.Add(author))
+                    {
+                        return RedirectToAction("Index");
+                    }
                 }
                 return View(model);
             }
@@ -77,9 +77,12 @@ namespace Library.WebApp.Controllers
             var author = mapper.Map<AuthorViewModel, Author>(model);
             try
             {
-                if (ModelState.IsValid && authorLogic.Edit(author))
+                if (ModelState.IsValid)
                 {
-                    return RedirectToAction("Index");
+                    if (authorLogic.Edit(author))
+                    {
+                        return RedirectToAction("Index");
+                    }
                 }
                 return View(model);
             }

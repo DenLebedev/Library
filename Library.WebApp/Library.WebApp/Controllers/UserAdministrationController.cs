@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Library.Entities;
 using Library.LogicContracts;
+using Library.WebApp.Models.MapperProfile;
 using Library.WebApp.Models.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -23,13 +24,7 @@ namespace Library.WebApp.Controllers
             this.userLogic = userLogic;
             this.userRoleLogic = userRoleLogic;
             config = new MapperConfiguration(cfg => {
-                cfg.CreateMap<User, IndexUserViewModel>()
-                    .ForMember("Username", opt => opt.MapFrom(src => src.Name))
-                    .ForMember("UserRoleName", opt => opt.MapFrom(src => src.RoleName));
-                cfg.CreateMap<User, EditUserViewModel>();
-                cfg.CreateMap<EditUserViewModel, User>()
-                    .ForMember("RoleId", opt => opt.MapFrom(src => src.RoleId));
-                cfg.CreateMap<User, DeleteUserViewModel>();
+                cfg.AddProfile<UserAdministartionAutoMapperProfile>();
             });
             mapper = config.CreateMapper();
         }
@@ -61,7 +56,7 @@ namespace Library.WebApp.Controllers
                 ModelState.AddModelError("Name", "This is a required field");
             }
 
-            if (model.Name.Length < 50)
+            if (model.Name.Length > 50)
             {
                 ModelState.AddModelError("Name", "Name length can't be more than 50 characters");
             }

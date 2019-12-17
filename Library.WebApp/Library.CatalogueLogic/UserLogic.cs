@@ -1,6 +1,8 @@
 ﻿using Library.DalContracts;
 using Library.Entities;
 using Library.LogicContracts;
+using Library.LogicContracts.ValidationLogicContracts;
+
 using NLog;
 using System;
 using System.Collections.Generic;

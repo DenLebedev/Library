@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Library.Entities;
 using Library.LogicContracts;
+using Library.WebApp.Models.MapperProfile;
 using Library.WebApp.Models.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -20,11 +21,8 @@ namespace Library.WebApp.Controllers
         public NewspaperNameController(INewspaperNameLogic nameLogic)
         {
             this.nameLogic = nameLogic;
-            this.config = new MapperConfiguration(cfg => {
-                cfg.CreateMap<NewspaperName, NewspaperNameViewModel>();
-                cfg.CreateMap<CreateNewspaperNameViewModel, NewspaperName>();
-                cfg.CreateMap<NewspaperName, EditNewspaperNameViewModel>();
-                cfg.CreateMap<EditNewspaperNameViewModel, NewspaperName>();
+            this.config = new MapperConfiguration(cfg => {                
+                cfg.AddProfile<NewspaperNameAutoMapperProfile>();
             });
             this.mapper = config.CreateMapper();
         }

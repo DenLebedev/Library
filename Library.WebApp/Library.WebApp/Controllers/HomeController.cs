@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Library.Entities;
 using Library.LogicContracts;
+using Library.WebApp.Models.MapperProfile;
 using Library.WebApp.Models.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -22,10 +23,7 @@ namespace Library.WebApp.Controllers
         {
             this.user = userLogic;
             config = new MapperConfiguration(cfg => {
-                cfg.CreateMap<LoginViewModel, User>()
-                    .ForMember("Name", opt => opt.MapFrom(src => src.Username));
-                cfg.CreateMap<RegistrationViewModel, User>()
-                    .ForMember("Name", opt => opt.MapFrom(src => src.Username));
+                cfg.AddProfile<HomeAutoMapperProfile>();
             });
             mapper = config.CreateMapper();
         }
