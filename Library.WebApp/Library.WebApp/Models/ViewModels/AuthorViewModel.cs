@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Library.WebApp.Models.ViewModels
 {
-    public class AuthorViewModel
+    public class AuthorViewModel : IValidatableObject
     {        
         public int Id { get; set; }
 
@@ -19,5 +19,18 @@ namespace Library.WebApp.Models.ViewModels
         [StringLength(200, ErrorMessage = "Surname length can't be more than 200 characters")]
         [RegularExpression(@"^([a-zA-ZА-Яа-яё '-])+$", ErrorMessage = "Surname can contain only letters")]
         public string Surname { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (string.IsNullOrWhiteSpace(Name))
+            {
+                yield return new ValidationResult("The author Name cannot be empty", new[] { nameof(Name)});
+            }
+
+            if (string.IsNullOrWhiteSpace(Surname))
+            {
+                yield return new ValidationResult("The author Surname cannot be empty", new[] { nameof(Surname) });
+            }
+        }
     }
 }

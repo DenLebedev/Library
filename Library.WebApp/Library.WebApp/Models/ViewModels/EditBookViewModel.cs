@@ -6,10 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Text.RegularExpressions;
 
-namespace Library.WebApp.Models.ViewModels
+namespace Library.WebApp.Models.ViewModels 
 {
-    public class EditBookViewModel
+    public class EditBookViewModel : IValidatableObject
     {
         public int Id { get; set; }
 
@@ -26,8 +27,8 @@ namespace Library.WebApp.Models.ViewModels
         public IEnumerable<SelectListItem> Publishings { get; set; }
         public int PublishingId { get; set; }
 
-        [Required(ErrorMessage = "This is a required field")] 
-        [Range(1400, 9999, ErrorMessage = "The Year of publication is incorrect")]
+        [Required(ErrorMessage = "This is a required field")]
+        [RegularExpression(@"^[0-9]+$", ErrorMessage = "This field can only contain numbers")]
         public int YearPublication { get; set; }
         
         [RegularExpression(@"\b(?:ISBN(?:: ?| ))?((?:97[89])?\d{9}[\dx])\b", ErrorMessage = "Incorrect ISBN")]
@@ -43,7 +44,7 @@ namespace Library.WebApp.Models.ViewModels
 
         internal void SetCities(List<City> cities)
         {
-            List<SelectListItem> items = new List<SelectListItem>();
+            var items = new List<SelectListItem>();
 
             for (int i = 0; i < cities.Count; i++)
             {
@@ -57,7 +58,7 @@ namespace Library.WebApp.Models.ViewModels
         }
         internal void SetAuthors(List<Author> authors)
         {
-            List<SelectListItem> items = new List<SelectListItem>();
+            var items = new List<SelectListItem>();
 
             for (int i = 0; i < authors.Count; i++)
             {
@@ -73,7 +74,7 @@ namespace Library.WebApp.Models.ViewModels
 
         internal void SetPublishings(List<Publishing> publishings)
         {
-            List<SelectListItem> items = new List<SelectListItem>();
+            var items = new List<SelectListItem>();
 
             for (int i = 0; i < publishings.Count; i++)
             {
@@ -85,6 +86,60 @@ namespace Library.WebApp.Models.ViewModels
             }
 
             this.Publishings = items;
+        }
+
+        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (string.IsNullOrWhiteSpace(Name))
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Username cannot be empty", new[] { nameof(Name) });
+            }
+
+            if (Name.Length > 300)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Name length can't be more than 300 characters", new[] { nameof(Name) });
+            }
+
+            if (YearPublication < 1400)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("The Year of publication may not be less than 1400", new[] { nameof(YearPublication) });
+            }
+
+            if (YearPublication > DateTime.UtcNow.Year)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("The Year of publication may not be more than the current year", new[] { nameof(YearPublication) });
+            }
+
+            var regexYearPublication = new Regex(@"^[0-9]+$");
+            MatchCollection matches = regexYearPublication.Matches(YearPublication.ToString());
+            if (matches.Count == 0)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("This field can only contain numbers", new[] { nameof(YearPublication) });
+            }
+
+            var regexISBN = new Regex(@"\b(?:ISBN(?:: ?| ))?((?:97[89])?\d{9}[\dx])\b");
+            matches = regexISBN.Matches(ISBN);
+            if (matches.Count == 0)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Incorrect ISBN", new[] { nameof(ISBN) });
+            }
+
+            if (PageCount < 1)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("The number of pages cannot be less than 1", new[] { nameof(PageCount) });
+            }
+
+            var regexPageCount = new Regex(@"^[0-9]+$");
+            matches = regexPageCount.Matches(PageCount.ToString());
+            if (matches.Count == 0)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("This field can only contain numbers", new[] { nameof(PageCount) });
+            }
+
+            if (Notes.Length > 2000)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Notes length can't be more than 2000 characters", new[] { nameof(Notes) });
+            }
         }
     }
 }

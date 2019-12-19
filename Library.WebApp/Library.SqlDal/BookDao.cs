@@ -36,10 +36,7 @@ namespace Library.SqlDal
                         con.Open();
                         cmnd.ExecuteNonQuery();
                         int? id = cmnd.Parameters["@id"].Value as int?;
-                        if (id != null)
-                        {
-                            book.Id = (int)cmnd.Parameters["@id"].Value;
-                        }
+                        book.Id = id ?? throw new ArgumentNullException(nameof(id), "Id cannot be null");
                         return true;
                     }
                 }
