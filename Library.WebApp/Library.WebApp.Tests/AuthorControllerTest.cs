@@ -23,7 +23,7 @@ namespace Library.WebApp.Tests
         #region NotNullTests
 
         [TestMethod]
-        public void IndexViewNotNull()
+        public void IndexView_NotNull()
         {
             var mock = new Mock<IAuthorLogic>();
             mock.Setup(a => a.GetAll()).Returns(new List<Author>());
@@ -33,7 +33,7 @@ namespace Library.WebApp.Tests
         }
 
         [TestMethod]
-        public void CreateViewNotNull()
+        public void CreateView_NotNull()
         {
             var mock = new Mock<IAuthorLogic>();
             mock.Setup(a => a.Add(new Author()));
@@ -43,7 +43,7 @@ namespace Library.WebApp.Tests
         }
 
         [TestMethod]
-        public void EditViewNotNull()
+        public void EditView_NotNull()
         {
             var mock = new Mock<IAuthorLogic>();
             mock.Setup(a => a.Edit(new Author()));
@@ -53,7 +53,7 @@ namespace Library.WebApp.Tests
         }
 
         [TestMethod]
-        public void DeleteViewNotNull()
+        public void DeleteView_NotNull()
         {
             var mock = new Mock<IAuthorLogic>();
             mock.Setup(a => a.Delete(1));
@@ -63,7 +63,7 @@ namespace Library.WebApp.Tests
         }
 
         [TestMethod]
-        public void DeleteConfirmedViewNotNull()
+        public void DeleteConfirmedView_NotNull()
         {
             var mock = new Mock<IAuthorLogic>();
             mock.Setup(a => a.Delete(1));
@@ -92,12 +92,26 @@ namespace Library.WebApp.Tests
         {
             var mock = new Mock<IAuthorLogic>();
             AuthorViewModel author = new AuthorViewModel();
-            AuthorController controller = new AuthorController(mock.Object);
+            var controller = new AuthorController(mock.Object);
             controller.ModelState.AddModelError("Name", "Model have no name");
             ViewResult result = controller.Edit(author) as ViewResult;
             Assert.IsNotNull(result);
         }
 
         #endregion       
+
+        [TestMethod]
+        public void CreatePostAction_ReturnsRedirectToRouteResult()
+        {
+            var mock = new Mock<IAuthorLogic>();
+            CreateAuthorViewModel authorVM = new CreateAuthorViewModel()
+            { Name = "Alex", Surname = "Noi"};
+            var author = new Author() 
+            { Name = "Alex", Surname = "Noi" };
+            mock.Setup(a => a.Add(author)).Returns(true);
+            var controller = new AuthorController(mock.Object);            
+            var result = controller.Create(authorVM) as RedirectToRouteResult;
+            Assert.AreEqual("Index", result);
+        }
     }
 }

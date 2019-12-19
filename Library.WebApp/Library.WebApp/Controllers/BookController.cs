@@ -70,24 +70,16 @@ namespace Library.WebApp.Controllers
         [HttpPost]
         public ActionResult Create(CreateBookViewModel model)
         {
-            if (model.YearPublication < 1400)
-            {
-                ModelState.AddModelError("", "The Year of publication may not be less than 1400");
-            }
-
-            if (model.YearPublication > DateTime.UtcNow.Year)
-            {
-                ModelState.AddModelError("", "The Year of publication may not be more than the current year");
-            }
-
             var book = mapper.Map<CreateBookViewModel, Book>(model);
             try
             {
-                if (books.Add(book))
+                if (ModelState.IsValid)
                 {
-                    return RedirectToAction("Index");
+                    if (books.Add(book))
+                    {
+                        return RedirectToAction("Index");
+                    } 
                 }
-
                 model = new CreateBookViewModel(authors, cities, publishings);
                 return View(model);
             }
@@ -120,9 +112,12 @@ namespace Library.WebApp.Controllers
             model.SetPublishings(publishings.GetAll().ToList());
             try
             {
-                if (ModelState.IsValid && books.Edit(book))
+                if (ModelState.IsValid)
                 {
-                    return RedirectToAction("Index");
+                    if (books.Edit(book))
+                    {
+                        return RedirectToAction("Index");
+                    }
                 }
                 return View(model);
             }
