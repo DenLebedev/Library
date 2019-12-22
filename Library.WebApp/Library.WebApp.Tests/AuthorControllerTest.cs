@@ -20,6 +20,18 @@ namespace Library.WebApp.Tests
     [TestClass]
     public class AuthorControllerTest
     {
+        private readonly MapperConfiguration config;
+        private readonly IMapper mapper;
+
+        public AuthorControllerTest()
+        {
+            this.config = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<AuthorAutoMapperProfile>();
+            });
+            this.mapper = config.CreateMapper();
+        }
+
         #region NotNullTests
 
         [TestMethod]
@@ -99,19 +111,5 @@ namespace Library.WebApp.Tests
         }
 
         #endregion       
-
-        [TestMethod]
-        public void CreatePostAction_ReturnsRedirectToRouteResult()
-        {
-            var mock = new Mock<IAuthorLogic>();
-            CreateAuthorViewModel authorVM = new CreateAuthorViewModel()
-            { Name = "Alex", Surname = "Noi"};
-            var author = new Author() 
-            { Name = "Alex", Surname = "Noi" };
-            mock.Setup(a => a.Add(author)).Returns(true);
-            var controller = new AuthorController(mock.Object);            
-            var result = controller.Create(authorVM) as RedirectToRouteResult;
-            Assert.AreEqual("Index", result);
-        }
     }
 }

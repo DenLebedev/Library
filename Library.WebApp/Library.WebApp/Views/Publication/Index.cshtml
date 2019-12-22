@@ -1,0 +1,102 @@
+﻿@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/library.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <nav class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Library WebApp</a>
+            </div>
+            <div id="menuCreate">                
+            </div>
+        </nav>    
+    </div>
+    <div class="container body-content">
+        <div class="row">
+            <div id="tableBlock" class="col-xs-12 col-md-8"></div>
+            <div id="detailsBlock" class="col-xs-12 col-md-8">
+                @*<table class="table table-hover">
+            <tr><td><input class="d-none" type="hidden" id="detailsId" /></td><td></td></tr>
+            <tr><td><p>Book Name: </p></td><td><p id="detailsName"></p></td></tr>
+            <tr><td><p>Author: </p></td><td><p id="detailsAuthor"></p></td></tr>
+            <tr><td><p>Publishing: </p></td><td><p id="detailsPublishing"></p></td></tr>
+            <tr><td><p>City: </p></td><td><p id="detailsCity"></p></td></tr>
+            <tr><td><p>Year of Publication: </p></td><td><p id="detailsYearPublication"></p></td></tr>
+            <tr><td><p>ISBN: </p></td><td><p id="detailsISBN"></p></td></tr>
+            <tr><td><p>Page Count: </p></td><td><p id="detailsPageCount"></p></td></tr>
+            <tr><td><p>Notes: </p></td><td><p id="detailsNotes"></p></td></tr>
+        </table>*@
+                <dl class="row">
+                    <dt><input class="d-none" type="hidden" id="detailsId" /></dt>
+
+                    <dt class="col-sm-3">Book Name:</dt>
+                    <dd class="col-sm-9"><p id="detailsName"></p></dd>
+
+                    <dt class="col-sm-3">Author:</dt>
+                    <dd class="col-sm-9"><p id="detailsAuthor"></p></dd>
+
+                    <dt class="col-sm-3">Publishing:</dt>
+                    <dd class="col-sm-9"><p id="detailsPublishing"></p></dd>
+
+                    <dt class="col-sm-3">City:</dt>
+                    <dd class="col-sm-9"><p id="detailsCity"></p></dd>
+
+                    <dt class="col-sm-3">Year of Publication:</dt>
+                    <dd class="col-sm-9"><p id="detailsYearPublication"></p></dd>
+
+                    <dt class="col-sm-3">ISBN:</dt>
+                    <dd class="col-sm-9"><p id="detailsISBN"></p></dd>
+
+                    <dt class="col-sm-3">Page Count:</dt>
+                    <dd class="col-sm-9"><p id="detailsPageCount"></p></dd>
+
+                    <dt class="col-sm-3">Notes:</dt>
+                    <dd class="col-sm-9"><p id="detailsNotes"></p></dd>
+                </dl>
+            </div>
+            <div id="editBlock" class="col-xs-6 col-md-4">
+                <p><b>Edit book</b></p>
+                <table>
+                    <tr><td><input type="hidden" id="editId" /></td><td></td></tr>
+                    <tr><td><label>Book Name: </label></td><td><input type="text" id="editName" /></td></tr>
+                    <tr><td><label>Author: </label></td><td><input type="text" id="editAuthor" /></td></tr>
+                    <tr><td><label>Publishing: </label></td><td><input type="text" id="editPublishing" /></td></tr>
+                    <tr><td><label>City: </label></td><td><input type="text" id="editCity" /></td></tr>
+                    <tr><td><label>Year of Publication: </label></td><td><input type="number" id="editYearPublication" /></td></tr>
+                    <tr><td><label>ISBN: </label></td><td><input type="text" id="editISBN" /></td></tr>
+                    <tr><td><label>Page Count: </label></td><td><input type="number" id="editPageCount" /></td></tr>
+                    <tr><td><label>Notes: </label></td><td><input type="text" id="editNotes" /></td></tr>
+                    <tr><td><button class="btn btn-primary" id="editBook">Save book</button></td></tr>
+                </table>
+            </div>
+            <div id="createBlock" class="col-xs-6 col-md-4">
+                <p><b>Create new book</b></p>
+                <table>
+                    <tr><td><label>Book Name: </label></td><td><input type="text" id="addName" /></td></tr>
+                    <tr><td><label>Author: </label></td><td><input type="text" id="addAuthor" /></td></tr>
+                    <tr><td><label>Publishing: </label></td><td><input type="text" id="addPublishing" /></td></tr>
+                    <tr><td><label>City: </label></td><td><input type="text" id="addCity" /></td></tr>
+                    <tr><td><label>Year of Publication: </label></td><td><input type="number" id="addYearPublication" /></td></tr>
+                    <tr><td><label>ISBN: </label></td><td><input type="text" id="addISBN" /></td></tr>
+                    <tr><td><label>Page Count: </label></td><td><input type="number" id="addPageCount" /></td></tr>
+                    <tr><td><label>Notes: </label></td><td><input type="text" id="addNotes" /></td></tr>
+                </table>
+                <button class="btn btn-primary" id="addBook">Add book</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+    
+
+
