@@ -63,15 +63,16 @@
                     <dt class="col-sm-3">Notes:</dt>
                     <dd class="col-sm-9"><p id="detailsNotes"></p></dd>
                 </dl>
+                <button id="reload" class='btn btn-outline-primary' onclick="window.location.reload(true);">Back to Library</button>                
             </div>
             <div id="editBlock" class="col-xs-6 col-md-4">
                 <p><b>Edit book</b></p>
                 <table>
                     <tr><td><input type="hidden" id="editId" /></td><td></td></tr>
                     <tr><td><label>Book Name: </label></td><td><input type="text" id="editName" /></td></tr>
-                    <tr><td><label>Author: </label></td><td><input type="text" id="editAuthor" /></td></tr>
-                    <tr><td><label>Publishing: </label></td><td><input type="text" id="editPublishing" /></td></tr>
-                    <tr><td><label>City: </label></td><td><input type="text" id="editCity" /></td></tr>
+                    <tr><td><label>Author: </label></td><td><select id="editAuthor"></select></td></tr>
+                    <tr><td><label>Publishing: </label></td><td><select id="editPublishing"></select></td></tr>
+                    <tr><td><label>City: </label></td><td><select id="editCity"></select></td></tr>
                     <tr><td><label>Year of Publication: </label></td><td><input type="number" id="editYearPublication" /></td></tr>
                     <tr><td><label>ISBN: </label></td><td><input type="text" id="editISBN" /></td></tr>
                     <tr><td><label>Page Count: </label></td><td><input type="number" id="editPageCount" /></td></tr>
@@ -83,9 +84,9 @@
                 <p><b>Create new book</b></p>
                 <table>
                     <tr><td><label>Book Name: </label></td><td><input type="text" id="addName" /></td></tr>
-                    <tr><td><label>Author: </label></td><td><input type="text" id="addAuthor" /></td></tr>
-                    <tr><td><label>Publishing: </label></td><td><input type="text" id="addPublishing" /></td></tr>
-                    <tr><td><label>City: </label></td><td><input type="text" id="addCity" /></td></tr>
+                    <tr><td><label>Author: </label></td><td><select id="addAuthor"></select></td></tr>
+                    <tr><td><label>Publishing: </label></td><td><select id="addPublishing"></select></td></tr>
+                    <tr><td><label>City: </label></td><td><select id="addCity"></select></td></tr>
                     <tr><td><label>Year of Publication: </label></td><td><input type="number" id="addYearPublication" /></td></tr>
                     <tr><td><label>ISBN: </label></td><td><input type="text" id="addISBN" /></td></tr>
                     <tr><td><label>Page Count: </label></td><td><input type="number" id="addPageCount" /></td></tr>

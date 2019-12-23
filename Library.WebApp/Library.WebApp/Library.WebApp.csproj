@@ -225,10 +225,13 @@
     <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PublicationController.cs" />
-    <Compile Include="Controllers\WebApiControlers\LibraryController.cs" />
+    <Compile Include="Controllers\WebApiControlers\AuthorWebApiController.cs" />
+    <Compile Include="Controllers\WebApiControlers\BookWebApiController.cs" />
     <Compile Include="Controllers\NewspaperNameController.cs" />
     <Compile Include="Controllers\PublishingController.cs" />
     <Compile Include="Controllers\UserAdministrationController.cs" />
+    <Compile Include="Controllers\WebApiControlers\CityWebApiController.cs" />
+    <Compile Include="Controllers\WebApiControlers\PublishingWebApiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
